@@ -9,11 +9,16 @@ LIBFT_DIR	=	lib/libft/
 
 MAIN_SRCS	=	main
 
+ifeq ($(MAIN), tim)
+	MAIN_SRCS = main_tim
+else ifeq ($(MAIN), alexis)
+	CFLAGS = main_alexis
+endif
+
 SRCS		=	$(addprefix $(SRC_DIR)main/, $(addsuffix .c, $(MAIN_SRCS)))
 OBJS		=	$(addprefix $(OBJ_DIR), $(notdir $(SRCS:.c=.o)))
 DEPS		=	$(addprefix $(DEP_DIR), $(notdir $(SRCS:.c=.d)))
 VPATH		=	$(addprefix $(SRC_DIR), $(SRC_SUBDIRS))
-
 vpath %.c $(VPATH)
 
 LIBFT		=	$(LIBFT_DIR)libft.a
@@ -33,8 +38,8 @@ else ifeq ($(MODE), sanitize)
 	CFLAGS += -g -fsanitize=address
 endif
 
-all:			$(NAME)
 
+all:			$(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
 				$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -o $@
