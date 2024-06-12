@@ -14,7 +14,7 @@ ifeq ($(MAIN), tim)
 else ifeq ($(MAIN), alexis)
 	CFLAGS = main_alexis
 endif
-
+ 
 SRCS		=	$(addprefix $(SRC_DIR)main/, $(addsuffix .c, $(MAIN_SRCS)))
 OBJS		=	$(addprefix $(OBJ_DIR), $(notdir $(SRCS:.c=.o)))
 DEPS		=	$(addprefix $(DEP_DIR), $(notdir $(SRCS:.c=.d)))
@@ -42,13 +42,13 @@ endif
 all:			$(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -o $@
+				@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -o $@
 				@printf "$(GREEN)\n$(NAME) successfully compiled$(DEF_COLOR)\n"
 
 $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@mkdir -p $(DEP_DIR)
-				$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -I$(LIBFT_DIR)/inc  -c $< -o $@
+				@$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -I$(LIBFT_DIR)/inc  -c $< -o $@
 				@printf "$(YELLOW).$(DEF_COLOR)"
 
 $(LIBFT):
