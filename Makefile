@@ -37,14 +37,14 @@ all:			$(NAME)
 
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -o $@
-	@printf "$(GREEN)\n$(NAME) successfully compiled$(DEF_COLOR)\n"
+				$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -o $@
+				@printf "$(GREEN)\n$(NAME) successfully compiled$(DEF_COLOR)\n"
 
 $(OBJ_DIR)%.o:	%.c
-	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(DEP_DIR)
-	$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -I$(LIBFT_DIR)/inc  -c $< -o $@
-	@printf "$(YELLOW).$(DEF_COLOR)"
+				@mkdir -p $(OBJ_DIR)
+				@mkdir -p $(DEP_DIR)
+				$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -I$(LIBFT_DIR)/inc  -c $< -o $@
+				@printf "$(YELLOW).$(DEF_COLOR)"
 
 $(LIBFT):
 				@make -C $(LIBFT_DIR) MODE=$(MODE)
