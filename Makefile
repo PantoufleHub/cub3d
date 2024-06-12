@@ -6,7 +6,7 @@ SRC_SUBDIRS	=	main
 OBJ_DIR		=	obj/
 DEP_DIR		=	$(OBJ_DIR)dep/
 LIBFT_DIR	=	lib/libft/
-
+MLX_DIR		=	lib/mlx/
 MAIN_SRCS	=	main
 
 ifeq ($(MAIN), tim)
@@ -22,7 +22,7 @@ VPATH		=	$(addprefix $(SRC_DIR), $(SRC_SUBDIRS))
 vpath %.c $(VPATH)
 
 LIBFT		=	$(LIBFT_DIR)libft.a
-
+MLX			=	$(MLX_DIR)libmlx.a
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
 DEP_FLAGS	=	-MMD -MP -MF $(DEP_DIR)$*.d
@@ -38,25 +38,27 @@ else ifeq ($(MODE), sanitize)
 	CFLAGS += -g -fsanitize=address
 endif
 
-
 all:			$(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-				@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -o $@
+$(NAME): $(LIBFT) $(OBJS) $(MLX)
+				@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/mlx -lm -lmlx -framework OpenGL -framework AppKit -o $@
 				@printf "$(GREEN)\n$(NAME) successfully compiled$(DEF_COLOR)\n"
 
 $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@mkdir -p $(DEP_DIR)
-				@$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -I$(LIBFT_DIR)/inc  -c $< -o $@
+				@$(CC) $(CFLAGS) $(DEP_FLAGS) -Ilib/mlx -I $(INC_DIR) -I$(LIBFT_DIR)/inc  -c $< -o $@
 				@printf "$(YELLOW).$(DEF_COLOR)"
 
 $(LIBFT):
 				@make -C $(LIBFT_DIR) MODE=$(MODE)
 
+$(MLX):
+				@make -C $(MLX_DIR) all
 clean:
 				@$(RM) -r $(OBJ_DIR)
 				@make -C $(LIBFT_DIR) clean
+				@make -C $(MLX_DIR) clean
 
 fclean:			clean
 				@$(RM) $(NAME)
