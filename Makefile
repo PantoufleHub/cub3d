@@ -13,7 +13,7 @@ MAIN_SRCS	=	main
 ifeq ($(MAIN), tim)
 	MAIN_SRCS = main_tim
 else ifeq ($(MAIN), alexis)
-	CFLAGS = main_alexis
+	MAIN_SRCS = main_alexis
 endif
  
 SRCS		=	$(addprefix $(SRC_DIR)main/, $(addsuffix .c, $(MAIN_SRCS)))
