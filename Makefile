@@ -11,7 +11,7 @@ MLX_DIR		=	lib/minilibx-linux/
 
 MAIN_SRCS	=	main
 RENDER_SRCS	=	init_render dda
-UTILS_SRCS	=	get_wall_dist pixel_put_utils
+UTILS_SRCS	=	render_utils pixel_put_utils
 
 
 ifeq ($(MAIN), tim)
