@@ -10,4 +10,15 @@
 # define WIDTH (640)
 # define HEIGHT (480)
 
+typedef struct	s_img_data
+{
+	void	*img;
+	void	*addr;
+	int		bit_per_pixel;
+	int		size_line;
+	int		endian;
+}				t_img_data;
+
+
+void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 #endif

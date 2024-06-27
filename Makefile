@@ -2,14 +2,17 @@ NAME		=	cub3D
 
 INC_DIR		=	inc/
 SRC_DIR		=	src/
-SRC_SUBDIRS	=	main render
+SRC_SUBDIRS	=	main render utils
 OBJ_DIR		=	obj/
 DEP_DIR		=	$(OBJ_DIR)dep/
 LIBFT_DIR	=	lib/libft/
 # MLX_DIR		=	lib/mlx/
 MLX_DIR		=	lib/minilibx-linux/
+
 MAIN_SRCS	=	main
-RENDER_SRCS	=	init_render
+RENDER_SRCS	=	init_render dda
+UTILS_SRCS	=	get_wall_dist pixel_put_utils
+
 
 ifeq ($(MAIN), tim)
 	MAIN_SRCS = main_tim
@@ -18,7 +21,8 @@ else ifeq ($(MAIN), alexis)
 endif
  
 SRCS		=	$(addprefix $(SRC_DIR)main/, $(addsuffix .c, $(MAIN_SRCS))) \
-				$(addprefix $(SRC_DIR)render/, $(addsuffix .c, $(RENDER_SRCS)))
+				$(addprefix $(SRC_DIR)render/, $(addsuffix .c, $(RENDER_SRCS))) \
+				$(addprefix $(SRC_DIR)utils/, $(addsuffix .c, $(UTILS_SRCS)))
 OBJS		=	$(addprefix $(OBJ_DIR), $(notdir $(SRCS:.c=.o)))
 DEPS		=	$(addprefix $(DEP_DIR), $(notdir $(SRCS:.c=.d)))
 VPATH		=	$(addprefix $(SRC_DIR), $(SRC_SUBDIRS))
