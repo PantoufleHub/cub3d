@@ -108,26 +108,9 @@ int main(int argc, char **argv)
 		if(side == 1) 
 			color = color / 2;
 		pixel_put_line(img, x, line,color);
-		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 		x++;
 
 	}
+		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 		mlx_loop(mlx);
-// 		// pixel_put_line(&img, x, vertical_line, color);
-// 		x++;
-// 	}
-// 	mlx_loop(mlx);
-// 	printf("%p",mlx_win);
-// 	// printf("%s",*map);
-// 	return (0);
-// }
-//
-// 	// double radian;
-// 	// double res;
-// 	// double fov;
-//
-// 	// radian = (90 * M_PI) / 180;
-// 	// fov = M_PI / 3;
-// 	// res = cos(radian);
-//
 }
