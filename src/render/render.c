@@ -14,9 +14,8 @@ void	render(t_data data, t_vectors vectors)
 		side = dda(&calc_infos, data);
 		wall_dist = get_wall_dist(side, calc_infos);
 		line = get_line_height(wall_dist);
-		if(data.map[calc_infos.mapX][calc_infos.mapY] == 1)
-			color = create_trgb(0, 255, 0, 0);
-		if(side == 1) 
+		color = create_trgb(0, 255, 0, 0);
+		if(side == 1)
 			color = color / 2;
 		pixel_put_line(data.img, data.x, line,color);
 		data.x++;

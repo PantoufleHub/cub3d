@@ -35,12 +35,12 @@ int main(int argc, char **argv)
 	char **map;
 
 	data.x = 0;
-	vectors.pos.x =  4; // x start position 
-	vectors.pos.y =  3; // y start position
-	vectors.dir.x =  -1; // initial direction vector
-	vectors.dir.y =  0; // initial direction vector
-	vectors.plane.x = 0; //the 2d raycaster version of camera plane
-	vectors.plane.y = 0.66;
+	vectors.pos.x =  4.0; // x start position 
+	vectors.pos.y =  3.0; // y start position
+	vectors.dir.x =  0; // initial direction vector
+	vectors.dir.y =  -1; // initial direction vector
+	vectors.plane.x = 0.66; //the 2d raycaster version of camera plane
+	vectors.plane.y = 0;
 
 	map = get_map(argv[1]);
 	data.map = map;
