@@ -13,6 +13,15 @@
 # define WIDTH (1920)
 # define HEIGHT (1080)
 
+enum e_key
+{
+	K_W  = 25,
+	K_A  = 38,
+	K_S  = 39,
+	K_D  = 40,
+	K_ESC = 9
+};
+
 typedef struct	s_img_data
 {
 	void	*img;
