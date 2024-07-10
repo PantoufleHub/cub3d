@@ -156,9 +156,16 @@ int	file_data_filled(t_map_data *data, int include_map)
 	return (1);
 }
 
+/// @brief Set player data determined by the NESW char in map
+/// @param c the character in the map
+/// @param col the column where c is
+/// @param row the row where c is
+/// @param data the map data
 void	set_player_data(char c, int col, int row, t_map_data *data)
 {
-	//NEED TO KNOW NESW DIR ROT whatever
+	// YO TIM J'ESPERE QUE CA ROULE
+	// if (c == N ou E ou S ou W)
+		// mettre data->player_data[2 et 3] aux bonnes valeurs pour la rotation
 	data->player_data[0] = col;
 	data->player_data[1] = row;
 }
