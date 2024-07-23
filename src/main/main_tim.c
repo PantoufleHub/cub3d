@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 {
 	if (argc < 2)
 		return (1);
-	t_vectors vectors;
+	// t_vectors vectors;
 	t_data data;
 	char **map;
 
@@ -45,24 +45,28 @@ int main(int argc, char **argv)
 	// vectors.plane.y = 0.66;
 	data.screen.width = WIDTH;
 	data.screen.height = HEIGHT;
+	
 	data.render.delay = 30;
 	data.raycast.presicion = 64;
+	
 	data.player.fov = 60;
 	data.player.x = 3;
-	data.player.y = 4;
+	data.player.y = 3;
 	data.player.angle = 90;
+
 	// calculate the value
 	data.screen.halfWidth = data.screen.width / 2;
 	data.screen.halfHeight = data.screen.height / 2;
 	data.raycast.incrAngle = data.player.fov / data.screen.width;
 	data.player.halfFov = data.player.fov / 2;
+
 	map = get_map(argv[1]);
 	data.map = map;
 	data.mlx.mlx = mlx_init();
 	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, WIDTH, HEIGHT, "SALUT ALEXIS");
 	data.img.img = mlx_new_image(data.mlx.mlx, WIDTH, HEIGHT);
 	data.img.addr = mlx_get_data_addr (data.img.img, &data.img.bit_per_pixel, &data.img.size_line, &data.img.endian);
-	data.vec = vectors;	
+	// data.vec = vectors;	
 	ft_controls(&data);
 	render(&data);
 	data.x = 0;

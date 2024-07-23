@@ -12,8 +12,8 @@
 
 # define WIDTH (1920)
 # define HEIGHT (1080)
-# define SPEED (1.25)
-# define ROTSPEED (M_PI_2)
+# define SPEED (0.5)
+# define ROTSPEED (5.0)
 # define TRUE (1)
 # define FALSE (0)
 
@@ -65,13 +65,24 @@ typedef struct	s_raycast
 	int	presicion;
 }				t_raycast;
 
+
+typedef struct	s_speed
+{
+	double movement;
+	double rotation;
+}				t_speed;
+
 typedef struct	s_player
 {
 	double fov;
 	double halfFov;
 	int	x;
 	int y;
-	double angle; 
+	double playerCos;
+	double playerSin;
+	double angle;
+	t_speed speed;
+
 }				t_player;
 
 

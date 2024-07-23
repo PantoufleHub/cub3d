@@ -11,7 +11,7 @@ MLX_DIR		=	lib/minilibx-linux/
 
 MAIN_SRCS	=	main
 RENDER_SRCS	=	init_render dda render movment
-UTILS_SRCS	=	render_utils pixel_put_utils color
+UTILS_SRCS	=	render_utils pixel_put_utils color utils
 
 
 ifeq ($(MAIN), tim)

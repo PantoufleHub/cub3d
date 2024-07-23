@@ -14,50 +14,25 @@ int ft_keypress(int key, t_data *data)
 {
   if (key == K_W)
   {
-    if (data->map[(int)(data->vec.pos.x + data->vec.dir.x* SPEED)][(int)(data->vec.pos.y)] == '0')
-    {
-      data->vec.pos.x += data->vec.dir.x * SPEED;
-    }
-    if (data->map[(int)(data->vec.pos.x)][(int)(data->vec.pos.y + data->vec.dir.y * SPEED)] == '0')
-    {
-      data->vec.pos.y += data->vec.dir.y * SPEED;
-    }
+    data->player.playerCos = cos(degreetoRadiant(data->player.angle)) * SPEED;
+    data->player.playerSin = sin(degreetoRadiant(data->player.angle)) * SPEED;
+    data->player.x += data->player.playerCos;
+    data->player.y += data->player.playerSin;
   }
   if (key == K_S)
   {
-    if (data->map[(int)(data->vec.pos.x - data->vec.dir.x* SPEED)][(int)(data->vec.pos.y)] == '0')
-    {
-      data->vec.pos.x -= data->vec.dir.x * SPEED;
-    }
-    if (data->map[(int)(data->vec.pos.x)][(int)(data->vec.pos.y - data->vec.dir.y * SPEED)] == '0')
-    {
-	data->vec.pos.y -= data->vec.dir.y * SPEED;
-    }
+    data->player.playerCos = cos(degreetoRadiant(data->player.angle)) * SPEED;
+    data->player.playerSin = sin(degreetoRadiant(data->player.angle)) * SPEED;
+    data->player.x -= data->player.playerCos;
+    data->player.y -= data->player.playerSin;
   }
   if (key == K_A)
   {
-    double  oldDirX;
-    double  oldPlaneX;
-    oldDirX = data->vec.dir.x;
-    data->vec.dir.x = data->vec.dir.x * cos(-ROTSPEED) - data->vec.dir.y * sin(-ROTSPEED); 
-    data->vec.dir.y = oldDirX * sin(-ROTSPEED) + data->vec.dir.y * cos(-ROTSPEED);
-
-    oldPlaneX = data->vec.plane.x ;
-    data->vec.plane.x = data->vec.plane.x * cos(-ROTSPEED) - data->vec.plane.y * sin(-ROTSPEED);  
-    data->vec.dir.y = oldPlaneX * sin(-ROTSPEED) + data->vec.plane.y * cos(-ROTSPEED);
- }
+    data->player.angle -= ROTSPEED;
+  }
   if (key == K_D)
   {
-    double  oldDirX;
-    double  oldPlaneX;
-
-    oldDirX = data->vec.dir.x;
-    data->vec.dir.x = data->vec.dir.x * cos(ROTSPEED) - data->vec.dir.y * sin(ROTSPEED); 
-    data->vec.dir.y = oldDirX * sin(ROTSPEED) + data->vec.dir.y * cos(ROTSPEED);
-
-    oldPlaneX = data->vec.plane.x ;
-    data->vec.plane.x = data->vec.plane.x * cos(ROTSPEED) - data->vec.plane.y * sin(ROTSPEED);  
-    data->vec.dir.y = oldPlaneX * sin(ROTSPEED) + data->vec.plane.y * cos(ROTSPEED);
+    data->player.angle += ROTSPEED;
   }
   render(data);
   return (0);
