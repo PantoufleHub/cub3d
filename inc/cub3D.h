@@ -46,8 +46,50 @@ typedef struct	s_mlx
 	void	*mlx_win;
 }				t_mlx;
 
+typedef struct	s_screen
+{
+	double	width;
+	double	height;
+	double	halfWidth;
+	double	halfHeight;
+}				t_screen;
+
+typedef struct	s_render
+{
+	int delay;
+}				t_render;
+
+typedef struct	s_raycast
+{
+	double incrAngle;
+	int	presicion;
+}				t_raycast;
+
+typedef struct	s_player
+{
+	double fov;
+	double halfFov;
+	int	x;
+	int y;
+	double angle; 
+}				t_player;
+
+
+typedef struct	s_ray
+{
+	double x;
+	double y;
+	double rayCos;
+	double raySin;
+}				t_ray;
+
 typedef struct	s_data
 {
+	t_screen	screen;
+	t_render	render;
+	t_raycast	raycast;
+	t_player	player;
+	t_ray		ray;
 	t_img_data	img;
 	int			x;
 	char		**map;
@@ -63,4 +105,5 @@ void	render(t_data *data);
 int		dda(t_calc_info *calc_info, t_data *data);
 int		ft_controls(t_data *data);
 void	clear_screen(t_data *data);
+double degreetoRadiant(double degree);
 #endif

@@ -1,6 +1,5 @@
 #include "../../inc/cub3D.h"
 
-
 t_calc_info init_sideDist(t_calc_info calc_info, t_vector pos)
 {
 	if(calc_info.rayDirX < 0)

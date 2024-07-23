@@ -36,13 +36,26 @@ int main(int argc, char **argv)
 	char **map;
 
 	data.x = 0;
-	vectors.pos.x =  3.0;	// x start position 
-	vectors.pos.y =  4.0;	// y start position
-	vectors.dir.x =  -1;		// initial direction vector
-	vectors.dir.y =  0;	// initial direction vector
-	vectors.plane.x = 0;	//the 2d raycaster version of camera plane
-	vectors.plane.y = 0.66;
-
+	// NOTE: REVOIR TOUTE LES DONNEE DE DEBUT
+	// vectors.pos.x =  3.0;	// x start position 
+	// vectors.pos.y =  4.0;	// y start position
+	// vectors.dir.x =  -1;		// initial direction vector
+	// vectors.dir.y =  0;	// initial direction vector
+	// vectors.plane.x = 0;	//the 2d raycaster version of camera plane
+	// vectors.plane.y = 0.66;
+	data.screen.width = WIDTH;
+	data.screen.height = HEIGHT;
+	data.render.delay = 30;
+	data.raycast.presicion = 64;
+	data.player.fov = 60;
+	data.player.x = 3;
+	data.player.y = 4;
+	data.player.angle = 90;
+	// calculate the value
+	data.screen.halfWidth = data.screen.width / 2;
+	data.screen.halfHeight = data.screen.height / 2;
+	data.raycast.incrAngle = data.player.fov / data.screen.width;
+	data.player.halfFov = data.player.fov / 2;
 	map = get_map(argv[1]);
 	data.map = map;
 	data.mlx.mlx = mlx_init();

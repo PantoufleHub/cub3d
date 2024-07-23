@@ -23,3 +23,31 @@ void	render(t_data *data)
 	}
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.mlx_win, data->img.img, 0, 0);
 }
+
+void	raycast(t_data *data)
+{
+	double	rayAngle;
+	int		wall;
+
+	rayAngle = data->player.angle - data->player.halfFov;
+	data->x = 0;
+	clear_screen(data);
+	while(data->x < data->screen.width)
+	{
+		data->ray.x = data->player.x;
+		data->ray.y = data->player.y;
+
+		data->ray.rayCos = cos(degreetoRadiant(rayAngle)) / data->raycast.presicion;
+		data->ray.raySin = sin(degreetoRadiant(rayAngle)) / data->raycast.presicion;
+		// Wall finder
+		wall = 0;
+		while(wall == 0)
+		{
+			data->ray.x += data->ray.rayCos;
+			data->ray.y += data->ray.raySin;
+		}
+		//increment
+		rayAngle += data->raycast.incrAngle;
+		data->x++;
+	}
+}
