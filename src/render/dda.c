@@ -1,6 +1,6 @@
 #include "../../inc/cub3D.h"
 
-int dda(t_calc_info *calc_info, t_data data)
+int dda(t_calc_info *calc_info, t_data *data)
 {
 	int hit;
 	int side;
@@ -22,7 +22,7 @@ int dda(t_calc_info *calc_info, t_data data)
 				calc_info->mapY += calc_info->stepY;
 				side = 1;
 			}
-			if(data.map[calc_info->mapY][calc_info->mapX] == '1')
+			if(data->map[calc_info->mapX][calc_info->mapY] == '1')
 				hit = 1;
 		}
 	return (side);

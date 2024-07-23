@@ -1,5 +1,6 @@
 #include "../../inc/cub3D.h"
 
+//TODO: Free la memoire des anciennes images pour eviter la surcharge de memoire.
 char **get_map(char *path)
 {
 	int		map_fd;
@@ -35,12 +36,12 @@ int main(int argc, char **argv)
 	char **map;
 
 	data.x = 0;
-	vectors.pos.x =  4.0; // x start position 
-	vectors.pos.y =  3.0; // y start position
-	vectors.dir.x =  0; // initial direction vector
-	vectors.dir.y =  -1; // initial direction vector
-	vectors.plane.x = 0.66; //the 2d raycaster version of camera plane
-	vectors.plane.y = 0;
+	vectors.pos.x =  3.0;	// x start position 
+	vectors.pos.y =  4.0;	// y start position
+	vectors.dir.x =  -1;		// initial direction vector
+	vectors.dir.y =  0;	// initial direction vector
+	vectors.plane.x = 0;	//the 2d raycaster version of camera plane
+	vectors.plane.y = 0.66;
 
 	map = get_map(argv[1]);
 	data.map = map;
@@ -48,6 +49,9 @@ int main(int argc, char **argv)
 	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, WIDTH, HEIGHT, "SALUT ALEXIS");
 	data.img.img = mlx_new_image(data.mlx.mlx, WIDTH, HEIGHT);
 	data.img.addr = mlx_get_data_addr (data.img.img, &data.img.bit_per_pixel, &data.img.size_line, &data.img.endian);
-	render(data, vectors);
+	data.vec = vectors;	
+	ft_controls(&data);
+	render(&data);
+	data.x = 0;
 	mlx_loop(data.mlx.mlx);
 }

@@ -1,5 +1,6 @@
 // mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param)
 #include "../../inc/cub3D.h"
+#include <math.h>
 
 int is_move(int x, int y , t_data *data)
 {
@@ -32,6 +33,31 @@ int ft_keypress(int key, t_data *data)
     {
 	data->vec.pos.y -= data->vec.dir.y * SPEED;
     }
+  }
+  if (key == K_A)
+  {
+    double  oldDirX;
+    double  oldPlaneX;
+    oldDirX = data->vec.dir.x;
+    data->vec.dir.x = data->vec.dir.x * cos(-ROTSPEED) - data->vec.dir.y * sin(-ROTSPEED); 
+    data->vec.dir.y = oldDirX * sin(-ROTSPEED) + data->vec.dir.y * cos(-ROTSPEED);
+
+    oldPlaneX = data->vec.plane.x ;
+    data->vec.plane.x = data->vec.plane.x * cos(-ROTSPEED) - data->vec.plane.y * sin(-ROTSPEED);  
+    data->vec.dir.y = oldPlaneX * sin(-ROTSPEED) + data->vec.plane.y * cos(-ROTSPEED);
+ }
+  if (key == K_D)
+  {
+    double  oldDirX;
+    double  oldPlaneX;
+
+    oldDirX = data->vec.dir.x;
+    data->vec.dir.x = data->vec.dir.x * cos(ROTSPEED) - data->vec.dir.y * sin(ROTSPEED); 
+    data->vec.dir.y = oldDirX * sin(ROTSPEED) + data->vec.dir.y * cos(ROTSPEED);
+
+    oldPlaneX = data->vec.plane.x ;
+    data->vec.plane.x = data->vec.plane.x * cos(ROTSPEED) - data->vec.plane.y * sin(ROTSPEED);  
+    data->vec.dir.y = oldPlaneX * sin(ROTSPEED) + data->vec.plane.y * cos(ROTSPEED);
   }
   render(data);
   return (0);
