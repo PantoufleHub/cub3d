@@ -42,7 +42,7 @@ t_line get_line_height(double wall_dist)
 
 void pixel_put_line(t_img_data img, int x, t_line vertical_line, int color)
 {
-		while(vertical_line.drawStart != vertical_line.drawEnd)
+		while(vertical_line.drawStart < vertical_line.drawEnd)
 			my_mlx_pixel_put(&img,x,vertical_line.drawStart++, color);
 }
 

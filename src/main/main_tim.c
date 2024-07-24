@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 	data.screen.halfHeight = data.screen.height / 2;
 	data.raycast.incrAngle = data.player.fov / data.screen.width;
 	data.player.halfFov = data.player.fov / 2;
-
+	
 	map = get_map(argv[1]);
 	data.map = map;
 	data.mlx.mlx = mlx_init();

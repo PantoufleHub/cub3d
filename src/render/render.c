@@ -8,10 +8,22 @@ void	render(t_data *data)
 	// double	wallHeight;
 	int		color;
 	t_line	line;
+	t_line	ceiling;
 
 	rayAngle = data->player.angle - data->player.halfFov;
 	data->x = 0;
 	clear_screen(data);
+	// int x = 0;
+	// while (x < data->screen.width)
+	// {
+	// 	int y = 0;
+	// 	while (y < data->screen.halfHeight)
+	// 	{
+	// 		my_mlx_pixel_put(&data->img, x, y, create_trgb(0, 0, 255, 0));
+	// 		y++;
+	// 	}
+	// 	x++;
+	// }
 	while(data->x < data->screen.width)
 	{
 		data->ray.x = data->player.x;
@@ -36,11 +48,16 @@ void	render(t_data *data)
 
 		// wallHeight = (data->screen.halfHeight / distance);
 		line = get_line_height(distance);
+		ceiling.drawStart = data->x;
+		ceiling.drawEnd = line.drawStart;
 		color = create_trgb(0, 255, 0, 0);
+
+		pixel_put_line(data->img, data->x, ceiling, create_trgb(0, 0, 255, 0));
 		pixel_put_line(data->img, data->x, line, color);
+
 		//increment
 		rayAngle += data->raycast.incrAngle;
-		data->x++;
+		data->x += 1;
 	}
 		mlx_put_image_to_window(data->mlx.mlx, data->mlx.mlx_win, data->img.img, 0, 0);
 }
