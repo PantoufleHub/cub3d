@@ -76,15 +76,16 @@ typedef struct	s_player
 {
 	double fov;
 	double halfFov;
-	int	x;
-	int y;
+	double	x;
+	double	y;
 	double playerCos;
 	double playerSin;
+	double newX;
+	double newY;
 	double angle;
 	t_speed speed;
 
 }				t_player;
-
 
 typedef struct	s_ray
 {

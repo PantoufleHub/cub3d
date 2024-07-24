@@ -16,15 +16,27 @@ int ft_keypress(int key, t_data *data)
   {
     data->player.playerCos = cos(degreetoRadiant(data->player.angle)) * SPEED;
     data->player.playerSin = sin(degreetoRadiant(data->player.angle)) * SPEED;
-    data->player.x += data->player.playerCos;
-    data->player.y += data->player.playerSin;
+
+    data->player.newX = data->player.x + data->player.playerCos;
+    data->player.newY = data->player.y + data->player.playerSin;
+    if (data->map[(int)data->player.newX][(int)data->player.newY] == '0')
+    {
+      data->player.x = data->player.newX;
+      data->player.y = data->player.newY;
+    }
   }
   if (key == K_S)
   {
     data->player.playerCos = cos(degreetoRadiant(data->player.angle)) * SPEED;
     data->player.playerSin = sin(degreetoRadiant(data->player.angle)) * SPEED;
-    data->player.x -= data->player.playerCos;
-    data->player.y -= data->player.playerSin;
+
+    data->player.newX = data->player.x - data->player.playerCos;
+    data->player.newY = data->player.y - data->player.playerSin;
+    if (data->map[(int)data->player.newX][(int)data->player.newY] == '0')
+    {
+      data->player.x = data->player.newX;
+      data->player.y = data->player.newY;
+    }
   }
   if (key == K_A)
   {

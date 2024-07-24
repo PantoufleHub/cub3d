@@ -27,3 +27,4 @@ int dda(t_calc_info *calc_info, t_data *data)
 		}
 	return (side);
 }
+
