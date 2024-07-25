@@ -14,6 +14,7 @@
 # define HEIGHT (1080)
 # define SPEED (0.5)
 # define ROTSPEED (5.0)
+// # define FOV (60)
 # define TRUE (1)
 # define FALSE (0)
 
@@ -102,6 +103,7 @@ typedef struct	s_ray
 	double y;
 	double rayCos;
 	double raySin;
+	double rayAngle;
 }				t_ray;
 
 typedef struct	s_data
@@ -121,9 +123,12 @@ typedef struct	s_data
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color);
 int		create_trgb(int t, int r, int g, int b);
-void	render(t_data *data);
+void	refresh(t_data *data);
 // int		dda(t_calc_info *calc_info, t_data *data);
 int		ft_controls(t_data *data);
 void	clear_screen(t_data *data);
 double degreetoRadiant(double degree);
+double	raycasting(t_data *data);
+double cos_degree(double degree);
+double sin_degree(double degree);
 #endif
