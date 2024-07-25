@@ -10,7 +10,7 @@ LIBFT_DIR	=	lib/libft/
 # MLX_DIR		=	lib/minilibx-linux/ 
 MLX_DIR		=	lib/mlx/
 MAIN_SRCS	=	main
-RENDER_SRCS	=	init_render dda render movment
+RENDER_SRCS	=	init_render dda render movment raycasting
 UTILS_SRCS	=	render_utils pixel_put_utils color utils
 
 

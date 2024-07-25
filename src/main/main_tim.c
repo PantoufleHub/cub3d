@@ -31,7 +31,6 @@ int main(int argc, char **argv)
 {
 	if (argc < 2)
 		return (1);
-	// t_vectors vectors;
 	t_data data;
 	char **map;
 
@@ -56,7 +55,6 @@ int main(int argc, char **argv)
 	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, WIDTH, HEIGHT, "SALUT ALEXIS");
 	data.img.img = mlx_new_image(data.mlx.mlx, WIDTH, HEIGHT);
 	data.img.addr = mlx_get_data_addr (data.img.img, &data.img.bit_per_pixel, &data.img.size_line, &data.img.endian);
-	// data.vec = vectors;	
 	ft_controls(&data);
 	render(&data);
 	data.x = 0;
