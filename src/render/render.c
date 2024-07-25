@@ -9,6 +9,7 @@ void	render(t_data *data)
 	int		color;
 	t_line	line;
 	t_line	ceiling;
+	t_line	floor;
 
 	rayAngle = data->player.angle - data->player.halfFov;
 	data->x = 0;
@@ -24,7 +25,7 @@ void	render(t_data *data)
 	// 	}
 	// 	x++;
 	// }
-	while(data->x < data->screen.width)
+	while(data->x < WIDTH)
 	{
 		data->ray.x = data->player.x;
 		data->ray.y = data->player.y;
@@ -38,7 +39,7 @@ void	render(t_data *data)
 		{
 			data->ray.x += data->ray.rayCos;
 			data->ray.y += data->ray.raySin;
-			wall = data->map[(int)data->ray.x][(int)data->ray.y];
+			wall = data->map[(int)data->ray.y][(int)data->ray.x];
 		}
 		// Pythagore gang gang.
 		distance = sqrt(pow(data->player.x - data->ray.x, 2) + pow(data->player.y - data->ray.y, 2));
@@ -48,12 +49,15 @@ void	render(t_data *data)
 
 		// wallHeight = (data->screen.halfHeight / distance);
 		line = get_line_height(distance);
-		ceiling.drawStart = data->x;
+		ceiling.drawStart = 0;
 		ceiling.drawEnd = line.drawStart;
+		floor.drawStart = line.drawEnd;
+		floor.drawEnd   = HEIGHT;
 		color = create_trgb(0, 255, 0, 0);
 
-		pixel_put_line(data->img, data->x, ceiling, create_trgb(0, 0, 255, 0));
+		pixel_put_line(data->img, data->x, ceiling, create_trgb(0, 255, 255, 255));
 		pixel_put_line(data->img, data->x, line, color);
+		pixel_put_line(data->img, data->x, floor, create_trgb(0, 0, 255, 0));
 
 		//increment
 		rayAngle += data->raycast.incrAngle;

@@ -7,8 +7,8 @@ OBJ_DIR		=	obj/
 DEP_DIR		=	$(OBJ_DIR)dep/
 LIBFT_DIR	=	lib/libft/
 # MLX_DIR		=	lib/mlx/
-MLX_DIR		=	lib/minilibx-linux/
-
+# MLX_DIR		=	lib/minilibx-linux/ 
+MLX_DIR		=	lib/mlx/
 MAIN_SRCS	=	main
 RENDER_SRCS	=	init_render dda render movment
 UTILS_SRCS	=	render_utils pixel_put_utils color utils
@@ -48,14 +48,14 @@ endif
 all:			$(NAME)
 
 # @$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/mlx -lm -lmlx -framework OpenGL -framework AppKit -o $@
+# @$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/minilibx-linux/ -lm -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
 $(NAME): $(LIBFT) $(OBJS) $(MLX)
-				@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/minilibx-linux/ -lm -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
 				@printf "$(GREEN)\n$(NAME) successfully compiled$(DEF_COLOR)\n"
-
+				@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/mlx -lm -lmlx -framework OpenGL -framework AppKit -o $@
 $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@mkdir -p $(DEP_DIR)
-				@$(CC) $(CFLAGS) $(DEP_FLAGS) -Ilib/minilibx-linux/ -I $(INC_DIR) -I$(LIBFT_DIR)/inc -c $< -o $@
+				@$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(MLX_DIR) -I $(INC_DIR) -I$(LIBFT_DIR)/inc -c $< -o $@
 				@printf "$(YELLOW).$(DEF_COLOR)"
 
 $(LIBFT):

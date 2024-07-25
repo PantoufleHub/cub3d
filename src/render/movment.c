@@ -1,6 +1,7 @@
 // mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param)
 #include "../../inc/cub3D.h"
 #include <math.h>
+#include <stdio.h>
 
 int is_move(int x, int y , t_data *data)
 {
@@ -19,7 +20,7 @@ int ft_keypress(int key, t_data *data)
 
     data->player.newX = data->player.x + data->player.playerCos;
     data->player.newY = data->player.y + data->player.playerSin;
-    if (data->map[(int)data->player.newX][(int)data->player.newY] == '0')
+    if (data->map[(int)data->player.newY][(int)data->player.newX] == '0')
     {
       data->player.x = data->player.newX;
       data->player.y = data->player.newY;
@@ -32,7 +33,7 @@ int ft_keypress(int key, t_data *data)
 
     data->player.newX = data->player.x - data->player.playerCos;
     data->player.newY = data->player.y - data->player.playerSin;
-    if (data->map[(int)data->player.newX][(int)data->player.newY] == '0')
+    if (data->map[(int)data->player.newY][(int)data->player.newX] == '0')
     {
       data->player.x = data->player.newX;
       data->player.y = data->player.newY;
@@ -41,10 +42,12 @@ int ft_keypress(int key, t_data *data)
   if (key == K_A)
   {
     data->player.angle -= ROTSPEED;
+    printf("Player Angle: %f",data->player.angle);
   }
   if (key == K_D)
   {
     data->player.angle += ROTSPEED;
+    printf("Player Angle: %f",data->player.angle);
   }
   render(data);
   return (0);

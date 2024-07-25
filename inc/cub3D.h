@@ -17,13 +17,24 @@
 # define TRUE (1)
 # define FALSE (0)
 
+// NOTE: FOR LINUX
+// enum e_key
+// {
+// 	K_W  = 119,
+// 	K_A  = 97,
+// 	K_S  = 115,
+// 	K_D  = 100,
+// 	K_ESC = 65307
+// };
+
+// NOTE: FOR MAC OS
 enum e_key
 {
-	K_W  = 119,
-	K_A  = 97,
-	K_S  = 115,
-	K_D  = 100,
-	K_ESC = 65307
+	K_W  = 13,
+	K_A  = 0,
+	K_S  = 1,
+	K_D  = 2,
+	K_ESC = 53
 };
 
 enum e_events
@@ -48,15 +59,13 @@ typedef struct	s_mlx
 
 typedef struct	s_screen
 {
-	double	width;
-	double	height;
 	double	halfWidth;
 	double	halfHeight;
 }				t_screen;
 
 typedef struct	s_render
 {
-	int delay;
+	double distance;
 }				t_render;
 
 typedef struct	s_raycast
@@ -106,7 +115,6 @@ typedef struct	s_data
 	int			x;
 	char		**map;
 	t_mlx		mlx;
-	t_calc_info	calc_info;
 	t_vectors	vec;
 }				t_data;
 
@@ -114,7 +122,7 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color);
 int		create_trgb(int t, int r, int g, int b);
 void	render(t_data *data);
-int		dda(t_calc_info *calc_info, t_data *data);
+// int		dda(t_calc_info *calc_info, t_data *data);
 int		ft_controls(t_data *data);
 void	clear_screen(t_data *data);
 double degreetoRadiant(double degree);

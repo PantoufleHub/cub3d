@@ -1,25 +1,25 @@
 #include "../../inc/cub3D.h"
 
-double get_wall_dist(int side, t_calc_info calc_info)
-{
-	double	wall_dist;
-
-	if(side == 0) 
-	{
-		wall_dist = (calc_info.sideDistX - calc_info.deltaDistX);
-		if(wall_dist == 0)
-			wall_dist = 0.1;
-	}
-	else
-	{
-		wall_dist = (calc_info.sideDistY - calc_info.deltaDistY);
-		if(wall_dist == 0)
-			wall_dist = 0.1;
-	}
-
-
-	return (wall_dist);
-}
+// double get_wall_dist(int side, t_calc_info calc_info)
+// {
+// 	double	wall_dist;
+//
+// 	if(side == 0) 
+// 	{
+// 		wall_dist = (calc_info.sideDistX - calc_info.deltaDistX);
+// 		if(wall_dist == 0)
+// 			wall_dist = 0.1;
+// 	}
+// 	else
+// 	{
+// 		wall_dist = (calc_info.sideDistY - calc_info.deltaDistY);
+// 		if(wall_dist == 0)
+// 			wall_dist = 0.1;
+// 	}
+//
+//
+// 	return (wall_dist);
+// }
 
 t_line get_line_height(double wall_dist)
 {
