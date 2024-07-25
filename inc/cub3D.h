@@ -14,8 +14,9 @@
 # define HEIGHT (1080)
 # define SPEED (0.5)
 # define ROTSPEED (5.0)
-// # define FOV (60)
+# define FOV (60)
 # define TRUE (1)
+# define RAYCAST_PRES (64)
 # define FALSE (0)
 
 // NOTE: FOR LINUX
