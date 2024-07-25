@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 	data.player.fov = 60;
 	data.player.x = 3;
 	data.player.y = 3;
-	data.player.angle = 180;
+	data.player.angle = 0;
 
 	// calculate the value
 	data.screen.halfWidth = WIDTH / 2.0;
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 	data.img.img = mlx_new_image(data.mlx.mlx, WIDTH, HEIGHT);
 	data.img.addr = mlx_get_data_addr (data.img.img, &data.img.bit_per_pixel, &data.img.size_line, &data.img.endian);
 	ft_controls(&data);
-	render(&data);
+	refresh(&data);
 	data.x = 0;
 	mlx_loop(data.mlx.mlx);
 }

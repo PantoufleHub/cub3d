@@ -49,7 +49,7 @@ int ft_keypress(int key, t_data *data)
     data->player.angle += ROTSPEED;
     printf("Player Angle: %f",data->player.angle);
   }
-  render(data);
+  refresh(data);
   return (0);
 }
 
