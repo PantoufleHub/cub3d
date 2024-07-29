@@ -19,6 +19,13 @@
 # define RAYCAST_PRES (64)
 # define FALSE (0)
 
+enum e_direction
+{
+	NORTH = (-90),
+	EAST  = 0,
+	SOUTH = 90,
+	WEST = 180,
+};
 // NOTE: FOR LINUX
 enum e_key
 {
