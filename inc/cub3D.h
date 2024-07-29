@@ -20,24 +20,24 @@
 # define FALSE (0)
 
 // NOTE: FOR LINUX
-// enum e_key
-// {
-// 	K_W  = 119,
-// 	K_A  = 97,
-// 	K_S  = 115,
-// 	K_D  = 100,
-// 	K_ESC = 65307
-// };
-
-// NOTE: FOR MAC OS
 enum e_key
 {
-	K_W  = 13,
-	K_A  = 0,
-	K_S  = 1,
-	K_D  = 2,
-	K_ESC = 53
+	K_W  = 119,
+	K_A  = 97,
+	K_S  = 115,
+	K_D  = 100,
+	K_ESC = 65307
 };
+
+// NOTE: FOR MAC OS
+// enum e_key
+// {
+// 	K_W  = 13,
+// 	K_A  = 0,
+// 	K_S  = 1,
+// 	K_D  = 2,
+// 	K_ESC = 53
+// };
 
 enum e_events
 {
