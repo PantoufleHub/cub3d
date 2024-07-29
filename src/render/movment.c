@@ -1,6 +1,7 @@
 #include "../../inc/cub3D.h"
+#include <math.h>
 
-int	is_move(int y, int x, t_data *data)
+int	is_move(long y, long x, t_data *data)
 {
 	if (data->map[y][x] == '0')
 		return (TRUE);
@@ -13,7 +14,7 @@ void	pos_update_w(t_data **data)
 	(*data)->player.playerSin = sin_degree((*data)->player.angle) * SPEED;
 	(*data)->player.newX = (*data)->player.x + (*data)->player.playerCos;
 	(*data)->player.newY = (*data)->player.y + (*data)->player.playerSin;
-	if (is_move((*data)->player.newY, (*data)->player.newX, (*data)))
+	if (is_move(lrint((*data)->player.newY), lrint((*data)->player.newX), (*data)))
 	{
 		(*data)->player.x = (*data)->player.newX;
 		(*data)->player.y = (*data)->player.newY;
@@ -26,7 +27,7 @@ void	pos_update_s(t_data **data)
 	(*data)->player.playerSin = sin_degree((*data)->player.angle) * SPEED;
 	(*data)->player.newX = (*data)->player.x - (*data)->player.playerCos;
 	(*data)->player.newY = (*data)->player.y - (*data)->player.playerSin;
-	if (is_move((*data)->player.newY, (*data)->player.newX, (*data)))
+	if (is_move(lrint((*data)->player.newY), lrint((*data)->player.newX), (*data)))
 	{
 		(*data)->player.x = (*data)->player.newX;
 		(*data)->player.y = (*data)->player.newY;
