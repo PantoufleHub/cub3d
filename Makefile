@@ -6,9 +6,8 @@ SRC_SUBDIRS	=	main render utils
 OBJ_DIR		=	obj/
 DEP_DIR		=	$(OBJ_DIR)dep/
 LIBFT_DIR	=	lib/libft/
-# MLX_DIR		=	lib/mlx/
-# MLX_DIR		=	lib/minilibx-linux/ 
-MLX_DIR		=	lib/mlx/
+MLX_DIR		=	lib/minilibx-linux/ 
+#MLX_DIR		=	lib/mlx/
 MAIN_SRCS	=	main
 RENDER_SRCS	=	init_render dda render movment raycasting
 UTILS_SRCS	=	render_utils pixel_put_utils color utils
@@ -51,7 +50,7 @@ all:			$(NAME)
 # @$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/minilibx-linux/ -lm -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
 $(NAME): $(LIBFT) $(OBJS) $(MLX)
 				@printf "$(GREEN)\n$(NAME) successfully compiled$(DEF_COLOR)\n"
-				@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/mlx -lm -lmlx -framework OpenGL -framework AppKit -o $@
+				@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/minilibx-linux/ -lm -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
 $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@mkdir -p $(DEP_DIR)
