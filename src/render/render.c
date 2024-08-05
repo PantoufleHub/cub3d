@@ -24,7 +24,6 @@ void	refresh(t_data *data)
 
 	data->ray.rayAngle = data->player.angle - data->player.halfFov;
 	data->x = 0;
-	clear_screen(data);
 	while (data->x < WIDTH)
 	{
 		distance = raycasting(data);
