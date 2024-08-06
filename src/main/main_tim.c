@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 	data.player.fov = 60;
 	data.player.x = 3;
 	data.player.y = 3;
-	data.player.angle = 0;
+	data.player.angle = NORTH;
 
 	// calculate the value
 	data.screen.halfWidth = WIDTH / 2.0;
