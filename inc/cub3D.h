@@ -6,6 +6,7 @@
 # include <stdio.h>
 # include <math.h>
 # include "render.h"
+# include <sys/time.h>
 
 // # define WIDTH (640)
 // # define HEIGHT (480)
@@ -79,8 +80,8 @@ typedef struct	s_render
 
 typedef struct	s_raycast
 {
-	double incrAngle;
-	int	presicion;
+	double	incrAngle;
+	int		presicion;
 }				t_raycast;
 
 
@@ -124,6 +125,8 @@ typedef struct	s_data
 	t_img_data	img;
 	int			x;
 	char		**map;
+	struct timeval	oldtime;
+	long		frametime;
 	t_mlx		mlx;
 	t_vectors	vec;
 }				t_data;
@@ -139,4 +142,6 @@ double degreetoRadiant(double degree);
 double	raycasting(t_data *data);
 double cos_degree(double degree);
 double sin_degree(double degree);
+long	get_time_elapse(struct timeval ref_time_of_day);
+struct timeval	init_timer(void);
 #endif
