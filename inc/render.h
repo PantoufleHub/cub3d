@@ -15,7 +15,6 @@ typedef struct	s_vectors
 
 }				t_vectors;
 
-
 typedef struct	s_line
 {
 	int	drawStart;

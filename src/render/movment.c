@@ -1,5 +1,4 @@
 #include "../../inc/cub3D.h"
-#include <math.h>
 
 int	is_move(long y, long x, t_data *data)
 {

@@ -75,7 +75,8 @@ typedef struct	s_screen
 
 typedef struct	s_render
 {
-	double distance;
+	double	distance;
+	int		wall_color;
 }				t_render;
 
 typedef struct	s_raycast
@@ -111,6 +112,7 @@ typedef struct	s_ray
 	double x;
 	double y;
 	double rayCos;
+	double rayCos2;
 	double raySin;
 	double rayAngle;
 }				t_ray;
