@@ -34,10 +34,16 @@ t_calc_info get_calc_info(int x, t_vector dir, t_vector plane, t_vector pos)
 	cameraX = 2 * x /(double) WIDTH - 1;
 	res.rayDirX = dir.x + plane.x * cameraX;
 	res.rayDirY = dir.y + plane.y * cameraX;
-	res.mapX = pos.x;
-	res.mapY = pos.y;
-	res.deltaDistX = sqrt(1 + (res.rayDirY * res.rayDirY) / ( res.rayDirX * res.rayDirX));
-	res.deltaDistY = sqrt(1 + (res.rayDirX * res.rayDirX) / (res.rayDirY * res.rayDirY));
+	res.mapX = (int)pos.x;
+	res.mapY = (int)pos.y;
+	if (res.rayDirX == 0)
+		res.deltaDistX = 1e30;
+	else
+		res.deltaDistX = fabs(1 / res.rayDirX);
+	if (res.rayDirY == 0)
+		res.deltaDistY = 1e30;
+	else
+		res.deltaDistY = fabs(1 / res.rayDirY);
 	res = init_sideDist(res, pos);
 	return (res);
 }
