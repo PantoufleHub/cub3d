@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 	vectors.dir.y =  0;	// initial direction vector
 	vectors.plane.x = 0;	//the 2d raycaster version of camera plane
 	vectors.plane.y = 0.66;
-
+	
 	map = get_map(argv[1]);
 	data.map = map;
 	data.mlx.mlx = mlx_init();
@@ -50,6 +50,7 @@ int main(int argc, char **argv)
 	data.img.img = mlx_new_image(data.mlx.mlx, WIDTH, HEIGHT);
 	data.img.addr = mlx_get_data_addr (data.img.img, &data.img.bit_per_pixel, &data.img.size_line, &data.img.endian);
 	data.vec = vectors;	
+	data.ref_time = init_timer();
 	ft_controls(&data);
 	render(&data);
 	data.x = 0;
