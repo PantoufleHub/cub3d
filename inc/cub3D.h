@@ -46,6 +46,12 @@ typedef struct	s_mlx
 	void	*mlx;
 	void	*mlx_win;
 }				t_mlx;
+//
+// typedef struct	s_world
+// {
+// 	int	color_ceiling;
+// 	int	color_floor;
+// }				t_world;
 
 typedef struct	s_data
 {
@@ -66,8 +72,7 @@ int		create_trgb(int t, int r, int g, int b);
 void	render(t_data *data);
 int		dda(t_calc_info *calc_info, t_data *data);
 int		ft_controls(t_data *data);
-void	clear_screen(t_data *data);
 long	get_time_elapse(struct timeval ref_time_of_day);
-void rotations(t_data *data, double rotspeed);
+void	rotations(t_data *data, double rotspeed);
 struct timeval	init_timer(void);
 #endif
