@@ -5,15 +5,16 @@
 # include "../lib/minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <math.h>
-# include "render.h"
+#include "render.h"
+#include <sys/time.h>
 
 // # define WIDTH (640)
 // # define HEIGHT (480)
 
 # define WIDTH (1920)
 # define HEIGHT (1080)
-# define SPEED (1.25)
-# define ROTSPEED (M_PI_2)
+# define SPEED (0.5)
+# define ROTSPEED (0.2)
 # define TRUE (1)
 # define FALSE (0)
 
@@ -53,6 +54,9 @@ typedef struct	s_data
 	char		**map;
 	t_mlx		mlx;
 	t_calc_info	calc_info;
+	struct	timeval ref_time;
+	double		frametime;
+	double		oldTime;
 	t_vectors	vec;
 }				t_data;
 
@@ -63,4 +67,7 @@ void	render(t_data *data);
 int		dda(t_calc_info *calc_info, t_data *data);
 int		ft_controls(t_data *data);
 void	clear_screen(t_data *data);
+long	get_time_elapse(struct timeval ref_time_of_day);
+void rotations(t_data *data, double rotspeed);
+struct timeval	init_timer(void);
 #endif

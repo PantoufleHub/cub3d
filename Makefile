@@ -10,8 +10,8 @@ LIBFT_DIR	=	lib/libft/
 MLX_DIR		=	lib/minilibx-linux/
 
 MAIN_SRCS	=	main
-RENDER_SRCS	=	init_render dda render movment
-UTILS_SRCS	=	render_utils pixel_put_utils color
+RENDER_SRCS	=	init_render dda render movment rotation
+UTILS_SRCS	=	render_utils pixel_put_utils color time
 
 
 ifeq ($(MAIN), tim)
