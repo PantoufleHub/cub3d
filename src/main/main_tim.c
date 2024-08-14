@@ -39,10 +39,14 @@ int main(int argc, char **argv)
 	vectors.pos.x =  3.0;	// x start position 
 	vectors.pos.y =  4.0;	// y start position
 	vectors.dir.x =  -1;		// initial direction vector
-	vectors.dir.y =  0;	// initial direction vector
+	vectors.dir.y =  0;		// initial direction vector
 	vectors.plane.x = 0;	//the 2d raycaster version of camera plane
 	vectors.plane.y = 0.66;
 	
+	// vec.dir.x = 0 vec.dir.y = 1 plane.x= 0.66 plane.y =0 -> EAST
+	// vec.dir.x = -1 vec.dir.y = 0 plane.x = 0 plane.y = 0.66 -> NORTH
+	//
+
 	map = get_map(argv[1]);
 	data.map = map;
 	data.mlx.mlx = mlx_init();

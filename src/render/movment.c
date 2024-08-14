@@ -1,6 +1,5 @@
 // mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param)
 #include "../../inc/cub3D.h"
-#include <math.h>
 
 int ft_keypress(int key, t_data *data)
 {
@@ -10,13 +9,15 @@ int ft_keypress(int key, t_data *data)
       data->vec.pos.x += data->vec.dir.x * SPEED;
     if (data->map[(int)(data->vec.pos.x)][(int)(data->vec.pos.y + data->vec.dir.y * SPEED)] == '0')
       data->vec.pos.y += data->vec.dir.y * SPEED;
+	printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
   }
   if (key == K_S)
   {
     if (data->map[(int)(data->vec.pos.x - data->vec.dir.x* SPEED)][(int)(data->vec.pos.y)] == '0')
       data->vec.pos.x -= data->vec.dir.x * SPEED;
     if (data->map[(int)(data->vec.pos.x)][(int)(data->vec.pos.y - data->vec.dir.y * SPEED)] == '0')
-	data->vec.pos.y -= data->vec.dir.y * SPEED;
+      data->vec.pos.y -= data->vec.dir.y * SPEED;
+	printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
   }
   if (key == K_D)
     rotations(data,-ROTSPEED);

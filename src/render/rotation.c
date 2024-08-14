@@ -12,4 +12,5 @@ void rotations(t_data *data, double rotspeed)
     oldPlaneX = data->vec.plane.x ;
     data->vec.plane.x = data->vec.plane.x * cos(rotspeed) - data->vec.plane.y * sin(rotspeed);  
     data->vec.plane.y = oldPlaneX * sin(rotspeed) + data->vec.plane.y * cos(rotspeed);
+	printf("Vec dir x %lf\nVec dir Y %lf\n",data->vec.dir.x,data->vec.dir.y);
 }
