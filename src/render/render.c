@@ -2,31 +2,12 @@
 
 void render_column(t_line wall, int side,t_data *data)
 {
-	int color_west;
-	int color_north;
-	// int color_north;
-	int color;
 	t_line ceiling;
 	t_line floor;
+	int color;
 
-	color_west = create_trgb(0, 255, 0, 0);
-	color_north =  create_trgb(0, 255, 255, 255);
-	// color_north = create_trgb(0, 255, 0, 0);
 	color = 0;
-	if(side == 1)
-	{
-		if (data->calc_info.stepY == -1) 
-			color = color_west; // West
-		if (data->calc_info.stepY == 1)
-			color = color_west / 2; // East
-	}
-	else if (side == 0)
-	{
-		if (data->calc_info.stepX == -1)
-			color = color_north;
-		if (data->calc_info.stepX == 1)
-			color = color_north / 2;
-	}
+	color = wallside(data,side);
 	ceiling.drawStart = 0;
 	ceiling.drawEnd = wall.drawStart;
 	floor.drawStart = wall.drawEnd;
@@ -35,13 +16,16 @@ void render_column(t_line wall, int side,t_data *data)
 	pixel_put_line(data->img, data->x, wall,color);
 	pixel_put_line(data->img, data->x, floor, create_trgb(0, 0, 0, 255));
 }
-void	render(t_data *data)
+int	render(t_data *data)
 {
 	int side;
 	double wall_dist;
 	t_line wall;
 	
 	data->x = 0;
+	data->time.oldTime = data->time.time;
+	data->time.time = get_time_elapse(data->time.ref_time) / 1000.0;
+	data->time.FrameTime = (data->time.time - data->time.oldTime); 
 	while(data->x < WIDTH)
 	{
 		data->calc_info = get_calc_info(data->x, data->vec.dir, data->vec.plane, data->vec.pos);
@@ -52,4 +36,5 @@ void	render(t_data *data)
 		data->x++;
 	}
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.mlx_win, data->img.img, 0, 0);
+	return (0);
 }

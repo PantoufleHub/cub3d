@@ -46,33 +46,34 @@ typedef struct	s_mlx
 	void	*mlx;
 	void	*mlx_win;
 }				t_mlx;
-//
-// typedef struct	s_world
-// {
-// 	int	color_ceiling;
-// 	int	color_floor;
-// }				t_world;
+
+typedef struct	s_time
+{
+	struct	timeval	ref_time;
+	float	FrameTime;
+	float	time;
+	float	oldTime;
+}				t_time;
 
 typedef struct	s_data
 {
-	t_img_data	img;
-	int			x;
-	char		**map;
-	t_mlx		mlx;
-	t_calc_info	calc_info;
-	struct	timeval ref_time;
-	double		frametime;
-	double		oldTime;
-	t_vectors	vec;
+	t_img_data		img;
+	int				x;
+	char			**map;
+	t_mlx			mlx;
+	t_time			time;
+	t_calc_info		calc_info;
+	t_vectors		vec;
 }				t_data;
 
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color);
 int		create_trgb(int t, int r, int g, int b);
-void	render(t_data *data);
+int		render(t_data *data);
 int		dda(t_calc_info *calc_info, t_data *data);
-int		ft_controls(t_data *data);
+int		ft_hooks(t_data *data);
 long	get_time_elapse(struct timeval ref_time_of_day);
 void	rotations(t_data *data, double rotspeed);
 struct timeval	init_timer(void);
+int wallside(t_data *data, int side);
 #endif

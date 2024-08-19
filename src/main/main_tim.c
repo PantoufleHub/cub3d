@@ -30,7 +30,7 @@ char **get_map(char *path)
 int main(int argc, char **argv)
 {
 	if (argc < 2)
-		return (1);
+		return (TRUE);
 	t_vectors vectors;
 	t_data data;
 	char **map;
@@ -43,9 +43,10 @@ int main(int argc, char **argv)
 	vectors.plane.x = 0;	//the 2d raycaster version of camera plane
 	vectors.plane.y = 0.66;
 	
-	// vec.dir.x = 0 vec.dir.y = 1 plane.x= 0.66 plane.y =0 -> EAST
 	// vec.dir.x = -1 vec.dir.y = 0 plane.x = 0 plane.y = 0.66 -> NORTH
-	//
+	// vec.dir.x = 1 vec.dir.y = 0 plane.x = 0 plane.y = -0.66 -> SOUTH
+	// vec.dir.x = 0 vec.dir.y = 1 plane.x= 0.66 plane.y =0 -> EAST
+	// vec.dir.x = 0 vec.dir.y = -1 plane.x = -0.66 plane.y = 0 -> WEST
 
 	map = get_map(argv[1]);
 	data.map = map;
@@ -54,9 +55,10 @@ int main(int argc, char **argv)
 	data.img.img = mlx_new_image(data.mlx.mlx, WIDTH, HEIGHT);
 	data.img.addr = mlx_get_data_addr (data.img.img, &data.img.bit_per_pixel, &data.img.size_line, &data.img.endian);
 	data.vec = vectors;	
-	data.ref_time = init_timer();
-	ft_controls(&data);
+	data.time.ref_time = init_timer();
+	data.time.oldTime = 0;
+	data.time.time = 0;
+	ft_hooks(&data);
 	render(&data);
-	data.x = 0;
 	mlx_loop(data.mlx.mlx);
 }

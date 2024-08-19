@@ -14,14 +14,14 @@ int wallside(t_data *data, int side)
 		if (data->calc_info.stepY == -1) 
 			color = color_east;
 		if (data->calc_info.stepY == 1)
-			color = color_east / 2; 
+			color = color_east / 2; // WEST
 	}
 	else if (side == 0)
 	{
 		if (data->calc_info.stepX == -1)
 			color = color_north;
 		if (data->calc_info.stepX == 1)
-			color = color_north / 2;
+			color = color_north / 2; // SOUTH
 	}
 	return (color);
 }
