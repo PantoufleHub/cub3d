@@ -6,8 +6,8 @@ int ft_keypress(int key, t_data *data)
   double movespeed;
   double rotSpeed;
 
-  movespeed = data->time.FrameTime * 5.0;
-  rotSpeed  = data->time.FrameTime * 3.0;
+  movespeed = data->time.FrameTime * 7.0;
+  rotSpeed  = data->time.FrameTime * 4.0;
   if (key == K_W)
   {
     if (data->map[(int)(data->vec.pos.x + data->vec.dir.x* movespeed )][(int)(data->vec.pos.y)] == '0')
