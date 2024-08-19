@@ -1,5 +1,31 @@
 #include "../../inc/cub3D.h"
 
+int wallside(t_data *data, int side)
+{
+	int color_east;
+	int color_north;
+	int color;
+
+	color = 0;
+	color_east = create_trgb(0, 255, 0, 0);
+	color_north =  create_trgb(0, 255, 255, 255);
+	if(side == 1)
+	{
+		if (data->calc_info.stepY == -1) 
+			color = color_east;
+		if (data->calc_info.stepY == 1)
+			color = color_east / 2; 
+	}
+	else if (side == 0)
+	{
+		if (data->calc_info.stepX == -1)
+			color = color_north;
+		if (data->calc_info.stepX == 1)
+			color = color_north / 2;
+	}
+	return (color);
+}
+
 double get_wall_dist(int side, t_calc_info calc_info)
 {
 	double	wall_dist;
