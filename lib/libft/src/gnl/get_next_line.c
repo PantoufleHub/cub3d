@@ -28,7 +28,7 @@ char	*extract_line(char *s, char *c_found)
 	if (line == NULL)
 		return (NULL);
 	line[lens - len_c_found + 1] = '\0';
-	ft_memcpy(line, s, lens - len_c_found + 1);
+	ft_glmemcpy(line, s, lens - len_c_found + 1);
 	if (c_found != NULL)
 		line[lens - len_c_found] = '\n';
 	free (s);
@@ -44,7 +44,7 @@ char	*ft_strdup_gnl(char *s1)
 	memory = malloc((str_len + 1));
 	if (memory == NULL)
 		return (memory = NULL);
-	ft_memcpy(memory, s1, str_len + 1);
+	ft_glmemcpy(memory, s1, str_len + 1);
 	return (memory);
 }
 
@@ -116,6 +116,6 @@ char	*get_next_line(int fd)
 		stash[fd] = 0;
 	}
 	if (c_found != NULL)
-		ft_memcpy(stash[fd], c_found + 1, ft_strlen_gnl(c_found + 1) + 1);
+		ft_glmemcpy(stash[fd], c_found + 1, ft_strlen_gnl(c_found + 1) + 1);
 	return (line);
 }
