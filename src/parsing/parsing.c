@@ -1,11 +1,12 @@
-#include "mlx/mlx.h"
-#include "libft/inc/libft.h"
-#include "colors.h"
-#include "error_msg.h"
-#include "parsing.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "unistd.h"
+#include "../../lib/mlx/mlx.h"
+#include "../../lib/libft/inc/libft.h"
+#include "../../inc/colors.h"
+#include "../../inc/error_msg.h"
+#include "../../inc/parsing.h"
+#include "../../inc/cub3D.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 // ----- CHECKLIST -----
 // .CUB FILE EXISTS, ACCESS
@@ -113,16 +114,26 @@ int	print_err(char *line, int line_nb, char *msg)
 	return (-1);
 }
 
+void	init_img_data(t_img_data *data)
+{
+	data->img = NULL;
+	data->path = NULL;
+}
+
 void	init_map_data(t_map_data *data)
 {
 	data->map = NULL;
 	data->ceiling_color = -1;
 	data->floor_color = -1;
 	data->map = NULL;
-	data->NO_texture_path = NULL;
-	data->EA_texture_path = NULL;
-	data->SO_texture_path = NULL;
-	data->WE_texture_path = NULL;
+	data->n_img_data = malloc(sizeof (t_img_data));
+	data->e_img_data = malloc(sizeof (t_img_data));
+	data->s_img_data = malloc(sizeof (t_img_data));
+	data->w_img_data = malloc(sizeof (t_img_data));
+	init_img_data(data->n_img_data);
+	init_img_data(data->e_img_data);
+	init_img_data(data->s_img_data);
+	init_img_data(data->w_img_data);
 	data->player_data[0] = -1;
 	data->player_data[1] = -1;
 	data->player_data[2] = -1;
@@ -139,10 +150,10 @@ int	file_data_filled(t_map_data *data, int include_map)
 		return (0);
 	if (data->ceiling_color == -1 || data->floor_color == -1)
 		return (0);
-	if (!data->NO_texture_path
-		|| !data->EA_texture_path
-		|| !data->SO_texture_path
-		|| !data->WE_texture_path)
+	if (!data->n_img_data->path
+		|| !data->e_img_data->path
+		|| !data->s_img_data->path
+		|| !data->w_img_data->path)
 		return (0);
 	if (include_map)
 	{
@@ -430,27 +441,27 @@ int	set_texture_path(int line_nb, char *line, t_map_data *data, char *path)
 {
 	if (line[0] == 'N')
 	{
-		if (data->NO_texture_path)
+		if (data->n_img_data->path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->NO_texture_path, path));
+		return (set_data_path(line_nb, line, &data->n_img_data->path, path));
 	}
 	if (line[0] == 'E')
 	{
-		if (data->EA_texture_path)
+		if (data->e_img_data->path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->EA_texture_path, path));
+		return (set_data_path(line_nb, line, &data->e_img_data->path, path));
 	}
 	if (line[0] == 'S')
 	{
-		if (data->SO_texture_path)
+		if (data->s_img_data->path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->SO_texture_path, path));
+		return (set_data_path(line_nb, line, &data->s_img_data->path, path));
 	}
 	if (line[0] == 'W')
 	{
-		if (data->WE_texture_path)
+		if (data->w_img_data->path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->WE_texture_path, path));
+		return (set_data_path(line_nb, line, &data->w_img_data->path, path));
 	}
 	return (print_err(line, line_nb, "Error assigning texture path"));
 }
@@ -477,6 +488,15 @@ int	open_texture_path(int line_nb, char *line, t_map_data *data, char *path)
 		printf(RED"]\n"WHT);
 		return (-1);
 	}
+	// TEST .xpm EXTENSION /!\.
+	void *img = mlx_xpm_file_to_image(data->mlx,
+		path,
+		&(data->n_img_data->width), 
+		&(data->n_img_data->height));
+	if (!img)
+		printf(RED"NULLLLL"WHT);
+	else
+		printf(GRN"OKKKKK"WHT);
 	return (set_texture_path(line_nb, line, data, path));
 }
 

@@ -1,7 +1,8 @@
-#include "mlx/mlx.h"
-#include "libft/inc/libft.h"
-#include "parsing.h"
-#include "colors.h"
+#include "../../lib/mlx/mlx.h"
+#include "../../lib/libft/inc/libft.h"
+#include "../../inc/parsing.h"
+#include "../../inc/colors.h"
+#include "../../inc/cub3D.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -11,6 +12,7 @@ int main(int argc, char **argv)
 {
 	int parse_status = 0;
 	t_map_data data;
+	data.mlx = mlx_init();
 
 	if (argc != 2)
 	{

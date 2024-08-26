@@ -6,8 +6,8 @@ SRC_SUBDIRS	=	main
 OBJ_DIR		=	obj/
 DEP_DIR		=	$(OBJ_DIR)dep/
 LIBFT_DIR	=	lib/libft/
-# MLX_DIR		=	lib/mlx/
-MLX_DIR		=	lib/minilibx-linux/
+MLX_DIR		=	lib/mlx/
+# MLX_DIR		=	lib/minilibx-linux/
 MAIN_SRCS	=	main
 
 ifeq ($(MAIN), tim)
@@ -41,15 +41,16 @@ endif
 
 all:			$(NAME)
 
-# @$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/mlx -lm -lmlx -framework OpenGL -framework AppKit -o $@
 $(NAME): $(LIBFT) $(OBJS) $(MLX)
-				$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/minilibx-linux/ -lm -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
+#				$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/minilibx-linux/ -lm -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
+				@$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/mlx -lm -lmlx -framework OpenGL -framework AppKit -o $@
 				@printf "$(GREEN)\n$(NAME) successfully compiled$(DEF_COLOR)\n"
 
 $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@mkdir -p $(DEP_DIR)
-				$(CC) $(CFLAGS) $(DEP_FLAGS) -Ilib/minilibx-linux/ -I $(INC_DIR) -I$(LIBFT_DIR)/inc -c $< -o $@
+#				$(CC) $(CFLAGS) $(DEP_FLAGS) -Ilib/minilibx-linux/ -I $(INC_DIR) -I$(LIBFT_DIR)/inc -c $< -o $@
+				$(CC) $(CFLAGS) $(DEP_FLAGS) -Ilib/mlx/ -I $(INC_DIR) -I$(LIBFT_DIR)/inc -c $< -o $@
 				@printf "$(YELLOW).$(DEF_COLOR)"
 
 $(LIBFT):
