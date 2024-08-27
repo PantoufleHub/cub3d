@@ -468,35 +468,19 @@ int	set_texture_path(int line_nb, char *line, t_map_data *data, char *path)
 
 int	open_texture_path(int line_nb, char *line, t_map_data *data, char *path)
 {
-	int	status;
+	void	*img;
 
-	status = access(path, F_OK);
-	if (status < 0)
-	{
-		printf(RED"Error\nLine %d: File \"%s\" does not exist\n["WHT,
-			line_nb, path);
-		print_no_nl(line);
-		printf(RED"]\n"WHT);
-		return (-1);
-	}
-	status = access(path, R_OK);
-	if (status < 0)
-	{
-		printf(RED"Error\nLine %d: Unable to read file \"%s\"\n["WHT,
-			line_nb, path);
-		print_no_nl(line);
-		printf(RED"]\n"WHT);
-		return (-1);
-	}
-	// TEST .xpm EXTENSION /!\.
-	void *img = mlx_xpm_file_to_image(data->mlx,
-		path,
-		&(data->n_img_data->width), 
-		&(data->n_img_data->height));
+	if (access(path, F_OK) < 0)
+		return (print_err(line, line_nb, ERR_MSG_NOT_EXIST));
+	if (access(path, R_OK) < 0)
+		return (print_err(line, line_nb, ERR_MSG_READ_FILE));
+	if (ft_strlen(path) < 4
+		|| ft_strncmp(".xpm", path + ft_strlen(path) - 4, 4))
+		return (print_err(line, line_nb, ERR_MSG_FILE_TYPE));
+	img = mlx_xpm_file_to_image(data->mlx, path,
+			&(data->n_img_data->width), &(data->n_img_data->height));
 	if (!img)
-		printf(RED"NULLLLL"WHT);
-	else
-		printf(GRN"OKKKKK"WHT);
+		return (print_err(line, line_nb, ERR_MSG_INVALID_XPM));
 	return (set_texture_path(line_nb, line, data, path));
 }
 

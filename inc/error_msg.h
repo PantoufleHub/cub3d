@@ -14,5 +14,9 @@
 # define ERR_MSG_MALLOC "Memory allocation failed"
 # define ERR_MSG_MULTI_SPAWN "Multiple spawn points in map"
 # define ERR_MSG_NO_SPAWN "No spawn points in map"
+# define ERR_MSG_INVALID_XPM "Invalid xpm file"
+# define ERR_MSG_FILE_TYPE "Wrong file format"
+# define ERR_MSG_READ_FILE "Unable to read file"
+# define ERR_MSG_NOT_EXIST "File does not exist"
 
 #endif
