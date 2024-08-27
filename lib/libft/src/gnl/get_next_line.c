@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:17:31 by tfrily            #+#    #+#             */
-/*   Updated: 2023/11/29 10:31:31 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/08/26 14:59:46 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*extract_line(char *s, char *c_found)
 	if (line == NULL)
 		return (NULL);
 	line[lens - len_c_found + 1] = '\0';
-	ft_glmemcpy(line, s, lens - len_c_found + 1);
+	ftg_memcpy(line, s, lens - len_c_found + 1);
 	if (c_found != NULL)
 		line[lens - len_c_found] = '\n';
 	free (s);
@@ -44,7 +44,7 @@ char	*ft_strdup_gnl(char *s1)
 	memory = malloc((str_len + 1));
 	if (memory == NULL)
 		return (memory = NULL);
-	ft_glmemcpy(memory, s1, str_len + 1);
+	ftg_memcpy(memory, s1, str_len + 1);
 	return (memory);
 }
 
@@ -116,6 +116,6 @@ char	*get_next_line(int fd)
 		stash[fd] = 0;
 	}
 	if (c_found != NULL)
-		ft_glmemcpy(stash[fd], c_found + 1, ft_strlen_gnl(c_found + 1) + 1);
+		ftg_memcpy(stash[fd], c_found + 1, ft_strlen_gnl(c_found + 1) + 1);
 	return (line);
 }

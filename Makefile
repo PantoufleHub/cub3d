@@ -8,7 +8,6 @@ DEP_DIR		=	$(OBJ_DIR)dep/
 LIBFT_DIR	=	lib/libft/
 MLX_DIR		=	lib/mlx/
 #MLX_DIR		=	lib/minilibx-linux/
-
 MAIN_SRCS	=	main
 RENDER_SRCS	=	init_render dda render movment rotation
 UTILS_SRCS	=	render_utils pixel_put_utils color time

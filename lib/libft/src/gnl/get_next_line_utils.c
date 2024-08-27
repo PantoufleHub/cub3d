@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfrily <tfrily@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:17:33 by tfrily            #+#    #+#             */
-/*   Updated: 2023/11/28 16:28:41 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/08/26 15:03:06 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strchr_gnl(char *s, int c, char **cfound)
 	return (NULL);
 }
 
-void	*ft_glmemcpy(void *dst, const void *src, size_t n)
+void	*ftg_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	x;
 	char	*cdst;
@@ -80,8 +80,8 @@ void	*ft_strjoin_gnl(char *s1, char *s2)
 	if (newchar == NULL)
 		return (NULL);
 	newchar[lens1 + lens2] = '\0';
-	ft_glmemcpy(newchar, s1, lens1);
-	ft_glmemcpy(&newchar[lens1], s2, lens2);
+	ftg_memcpy(newchar, s1, lens1);
+	ftg_memcpy(&newchar[lens1], s2, lens2);
 	free(s1);
 	return (newchar);
 }

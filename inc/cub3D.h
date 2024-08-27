@@ -11,6 +11,15 @@
 // # define WIDTH (640)
 // # define HEIGHT (480)
 
+# define BLK "\033[30m"
+# define RED "\033[31m"
+# define GRN "\033[32m"
+# define YEL "\033[33m"
+# define BLU "\033[34m"
+# define MAG "\033[35m"
+# define CYN "\033[36m"
+# define WHT "\033[37m"
+
 # define WIDTH (1920)
 # define HEIGHT (1080)
 # define SPEED (0.5)

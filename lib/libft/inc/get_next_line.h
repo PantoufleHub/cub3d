@@ -27,7 +27,7 @@
 
 char	*ft_strchr_gnl(char *s, int c, char **cfound);
 void	*ft_strjoin_gnl(char *s1, char *s2);
-void	*ft_glmemcpy(void *dst, const void *src, size_t n);
+void	*ftg_memcpy(void *dst, const void *src, size_t n);
 size_t	ft_strlen_gnl(char *s);
 char	*ft_strdup_gnl(char *s1);
 char	*get_next_line(int fd);
