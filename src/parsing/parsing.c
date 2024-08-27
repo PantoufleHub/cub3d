@@ -257,8 +257,7 @@ int	parse_map3(char *prev_l, char *line, char *next_l, int *status)
 		get_adjacents((char *[3]){prev_l, line, next_l}, &adjacents, index);
 		if (!map_char_valid(line[index], adjacents))
 		{
-			if (!c_is_in(line[index], "NESW"))
-				*status = -1;
+			*status = -1;
 			printf(RED);
 		}
 		else if (line[index] == '1')
