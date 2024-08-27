@@ -17,15 +17,24 @@
 # define ROTSPEED (0.2)
 # define TRUE (1)
 # define FALSE (0)
-
 enum e_key
 {
-	K_W  = 119,
-	K_A  = 97,
-	K_S  = 115,
-	K_D  = 100,
-	K_ESC = 65307
+	K_W  = 13,
+	K_A  = 0,
+	K_S  = 1,
+	K_D  = 2,
+	K_ESC = 53
 };
+
+// NOTE: FOR LINUX
+// enum e_key
+// {
+// 	K_W  = 119,
+// 	K_A  = 97,
+// 	K_S  = 115,
+// 	K_D  = 100,
+// 	K_ESC = 65307
+// };
 
 enum e_events
 {
