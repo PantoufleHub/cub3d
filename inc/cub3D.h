@@ -5,7 +5,6 @@
 # include "../lib/minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <math.h>
-#include "render.h"
 #include <sys/time.h>
 
 // # define WIDTH (640)
