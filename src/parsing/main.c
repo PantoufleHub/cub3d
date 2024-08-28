@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	int parse_status = 0;
-	t_map_data data;
+	t_data data;
 	data.mlx = mlx_init();
 
 	if (argc != 2)
