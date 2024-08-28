@@ -50,6 +50,41 @@ enum e_events
 	E_KEYPRESS = 2
 };
 
+typedef struct	s_vector
+{
+	double x;
+	double y;
+}				t_vector;
+
+typedef struct	s_vectors
+{
+	t_vector plane;
+	t_vector pos;
+	t_vector dir;
+
+}				t_vectors;
+
+typedef struct	s_calc_info
+{
+	int		mapX;
+	int		mapY;
+	double	sideDistX;
+	double	sideDistY;
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist;
+	double	rayDirX;
+	double	rayDirY;
+	int		stepX;
+	int		stepY;
+}				t_calc_info;
+
+
+typedef struct	s_line
+{
+	int	drawStart;
+	int	drawEnd;
+}		t_line;
 typedef struct	s_img_data
 {
 	void	*img;
@@ -73,16 +108,23 @@ typedef struct	s_time
 	float	oldTime;
 }				t_time;
 
-typedef struct	s_data
+typedef struct    s_data
 {
-	t_img_data		img;
-	int				x;
-	char			**map;
-	t_mlx			mlx;
-	t_time			time;
-	t_calc_info		calc_info;
-	t_vectors		vec;
-}				t_data;
+    void            *mlx;
+    void            *win;
+    t_img_data        img;
+    int                x;
+    char            **map;
+    t_time            time;
+    t_calc_info        calc_info;
+    t_vectors        vec;
+    int                floor_color;
+    int                ceiling_color;
+    t_img_data        *n_img_data;
+    t_img_data        *e_img_data;
+    t_img_data        *s_img_data;
+    t_img_data        *w_img_data;
+}                t_data;
 
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color);
@@ -94,4 +136,8 @@ long	get_time_elapse(struct timeval ref_time_of_day);
 void	rotations(t_data *data, double rotspeed);
 struct timeval	init_timer(void);
 int wallside(t_data *data, int side);
+t_calc_info	get_calc_info(int x, t_vector dir, t_vector plane, t_vector pos);
+// void		dda(t_calc_info *calc_info, int **map); // TODO: get back to this version after TEST
+double get_wall_dist(int side, t_calc_info calc_info);
+t_line get_line_height(double wall_dist);
 #endif
