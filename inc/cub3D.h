@@ -107,23 +107,23 @@ typedef struct	s_time
 	float	oldTime;
 }				t_time;
 
-typedef struct    s_data
+typedef struct	s_data
 {
-    void            *mlx;
-    void            *win;
-    t_img_data        img;
-    int                x;
-    char            **map;
-    t_time            time;
-    t_calc_info        calc_info;
-    t_vectors        vec;
-    int                floor_color;
-    int                ceiling_color;
-    t_img_data        *n_img_data;
-    t_img_data        *e_img_data;
-    t_img_data        *s_img_data;
-    t_img_data        *w_img_data;
-}                t_data;
+    void	*mlx;
+    void	*win;
+    t_img_data	img;
+    int		x;
+    char	**map;
+    t_time	time;
+    t_calc_info	calc_info;
+    t_vectors	vec;
+    int		floor_color;
+    int		ceiling_color;
+    t_img_data	*n_img_data;
+    t_img_data	*e_img_data;
+    t_img_data	*s_img_data;
+    t_img_data	*w_img_data;
+}		t_data;
 
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color);

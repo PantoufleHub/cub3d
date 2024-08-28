@@ -34,8 +34,8 @@ int ft_keypress(int key, t_data *data)
 
 int	ft_hooks(t_data *data)
 {
-  mlx_loop_hook(data->mlx.mlx,render ,data);
-  mlx_hook(data->mlx.mlx_win, E_KEYPRESS, 1L<<0, ft_keypress, data);
+  mlx_loop_hook(data->mlx,render ,data);
+  mlx_hook(data->win, E_KEYPRESS, 1L<<0, ft_keypress, data);
   // mlx_hook(mlx->mlx_win, 17, 0, ft_buttonquit, data);
   return (0);
 }

@@ -50,9 +50,9 @@ int main(int argc, char **argv)
 
 	map = get_map(argv[1]);
 	data.map = map;
-	data.mlx.mlx = mlx_init();
-	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, WIDTH, HEIGHT, "SALUT ALEXIS");
-	data.img.img = mlx_new_image(data.mlx.mlx, WIDTH, HEIGHT);
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "SALUT ALEXIS");
+	data.img.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 	data.img.addr = mlx_get_data_addr (data.img.img, &data.img.bit_per_pixel, &data.img.size_line, &data.img.endian);
 	data.vec = vectors;	
 	data.time.ref_time = init_timer();
@@ -60,5 +60,5 @@ int main(int argc, char **argv)
 	data.time.time = 0;
 	ft_hooks(&data);
 	render(&data);
-	mlx_loop(data.mlx.mlx);
+	mlx_loop(data.mlx);
 }
