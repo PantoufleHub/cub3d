@@ -150,19 +150,19 @@ int	file_data_filled(t_data *data, int include_map)
 		return (0);
 	if (data->ceiling_color == -1 || data->floor_color == -1)
 		return (0);
-	if (!data->textures[0]->path
-		|| !data->textures[1]->path
-		|| !data->textures[2]->path
-		|| !data->textures[3]->path)
+	if (!data->textures[0].path
+		|| !data->textures[1].path
+		|| !data->textures[2].path
+		|| !data->textures[3].path)
 		return (0);
 	if (include_map)
 	{
 		if (!data->map)
 			return (0);
-		// if (data->player_data[0] == -1
-		// 	|| data->player_data[1] == -1
-		// 	|| data->player_data[2] == -1)
-		// 	return (0);
+		if (data->vec.dir.x == VEC_INIT || data->vec.dir.y == VEC_INIT
+			|| data->vec.plane.x == VEC_INIT || data->vec.plane.y == VEC_INIT
+			|| data->vec.pos.x == VEC_INIT || data->vec.pos.y == VEC_INIT)
+			return (0);
 	}
 	return (1);
 }
@@ -174,18 +174,36 @@ int	file_data_filled(t_data *data, int include_map)
 /// @param data the map data
 void	set_player_data(char c, int col, int row, t_data *data)
 {
-	// YO TIM J'ESPERE QUE CA ROULE
-	// if (c == N ou E ou S ou W)
-		// mettre data->player_data[2 et 3] aux bonnes valeurs pour la rotation
-	// data->player_data[0] = col;
-	// data->player_data[1] = row;
+	if (c == 'N')
+		data->vec.dir.x = -1;
+		data->vec.dir.y = 0;
+		data->vec.plane.x = 0;
+		data->vec.plane.y = 0.66;
+	if (c == 'E')
+		data->vec.dir.x = 0;
+		data->vec.dir.y = 1;
+		data->vec.plane.x = 0.66;
+		data->vec.plane.y = 0;
+	if (c == 'S')
+		data->vec.dir.x = 1;
+		data->vec.dir.y = 0;
+		data->vec.plane.x = 0;
+		data->vec.plane.y = -0.66;
+	if (c == 'W')
+		data->vec.dir.x = 0;
+		data->vec.dir.y = -1;
+		data->vec.plane.x = -0.66;
+		data->vec.plane.y = 0;
+	data->vec.pos.x = (double)col;
+	data->vec.pos.y = (double)row;
 }
 
 int	get_player_data(t_list *map, t_data *data)
 {
-	int		row;
-	int		col;
-	char	*line;
+	int			row;
+	int			col;
+	char		*line;
+	static int	player_count = 0;
 
 	row = 0;
 	while (map)
@@ -196,8 +214,9 @@ int	get_player_data(t_list *map, t_data *data)
 		{
 			if (c_is_in(line[col], "NESW"))
 			{
-				// if (data->player_data[0] != -1)
-				// 	return (print_err(NULL, 0, ERR_MSG_MULTI_SPAWN));
+				player_count++;
+				if (player_count > 1)
+					return (print_err(NULL, 0, ERR_MSG_MULTI_SPAWN));
 				set_player_data(line[col], col, row, data);
 			}
 			col++;
@@ -205,8 +224,8 @@ int	get_player_data(t_list *map, t_data *data)
 		row++;
 		map = map->next;
 	}
-	// if (data->player_data[0] == -1)
-	// 	return (print_err(NULL, 0, ERR_MSG_NO_SPAWN));
+	if (player_count < 1)
+		return (print_err(NULL, 0, ERR_MSG_NO_SPAWN));
 	return (0);
 }
 
@@ -440,27 +459,30 @@ int	set_texture_path(int line_nb, char *line, t_data *data, char *path)
 {
 	if (line[0] == 'N')
 	{
-		if (data->textures[0]->path)
+		if (data->textures[0].path)
+		{
+			printf("Texture path: %s\n", data->textures[0].path);
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->textures[0]->path, path));
+		}
+		return (set_data_path(line_nb, line, &data->textures[0].path, path));
 	}
 	if (line[0] == 'E')
 	{
-		if (data->textures[1]->path)
+		if (data->textures[1].path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->textures[1]->path, path));
+		return (set_data_path(line_nb, line, &data->textures[1].path, path));
 	}
 	if (line[0] == 'S')
 	{
-		if (data->textures[2]->path)
+		if (data->textures[2].path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->textures[2]->path, path));
+		return (set_data_path(line_nb, line, &data->textures[2].path, path));
 	}
 	if (line[0] == 'W')
 	{
-		if (data->textures[3]->path)
+		if (data->textures[3].path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->textures[3]->path, path));
+		return (set_data_path(line_nb, line, &data->textures[3].path, path));
 	}
 	return (print_err(line, line_nb, "Error assigning texture path"));
 }
@@ -477,7 +499,7 @@ int	open_texture_path(int line_nb, char *line, t_data *data, char *path)
 		|| ft_strncmp(".xpm", path + ft_strlen(path) - 4, 4))
 		return (print_err(line, line_nb, ERR_MSG_FILE_TYPE));
 	img = mlx_xpm_file_to_image(data->mlx, path,
-			&(data->textures[0]->width), &(data->textures[0]->height));
+			&(data->textures[0].width), &(data->textures[0].height));
 	if (!img)
 		return (print_err(line, line_nb, ERR_MSG_INVALID_XPM));
 	return (set_texture_path(line_nb, line, data, path));
@@ -610,7 +632,6 @@ int	parse(char *path, t_data *data)
 	if (parse_path(path, &fd) < 0)
 		return (-1);
 	// init_data(data);
-	printf(YEL"\n[ Parsing file content ]\n"WHT);
 	if (parse_file(fd, data, &tmp_map) < 0)
 		return (-1);
 	if (!file_data_filled(data, 0))

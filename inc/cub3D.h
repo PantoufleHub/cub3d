@@ -12,7 +12,7 @@
 
 // # define WIDTH (640)
 // # define HEIGHT (480)
-# define VEC_NOT_SET (-2);
+
 enum e_key
 {
 	K_W  = 13,
@@ -106,24 +106,21 @@ typedef struct s_texture_data
 
 typedef struct	s_data
 {
-    void	*mlx;
-    void	*win;
-    t_img_data	img;
-    int		x;
-    char	**map;
-    t_time	time;
-    t_calc_info	calc_info;
-    t_vectors	vec;
-    int		floor_color;
-    int		ceiling_color;
-    t_texture_data	*textures[4]; // N E S W
-    // t_texture_data	*e_texture_data;
-    // t_texture_data	*s_texture_data;
-    // t_texture_data	*w_texture_data;
+	void	*mlx;
+	void	*win;
+	t_img_data	img;
+	int		x;
+	char	**map;
+	t_time	time;
+	t_calc_info	calc_info;
+	t_vectors	vec;
+	int		floor_color;
+	int		ceiling_color;
+	t_texture_data	textures[4]; // N E S W
 }		t_data;
 
 // PARSING
-int					parse(char *path, t_texture_data *data);
+int					parse(char *path, t_data *data);
 
 void				init_map_data(t_texture_data *data);
 

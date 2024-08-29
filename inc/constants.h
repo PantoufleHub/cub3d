@@ -22,6 +22,8 @@
 # define TRUE (1)
 # define FALSE (0)
 
+# define VEC_INIT (-2)
+
 # define KEYCODE_LEFT = 0
 # define KEYCODE_RIGHT = 0
 # define KEYCODE_FORWARD = 0
