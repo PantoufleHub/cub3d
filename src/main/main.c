@@ -1,8 +1,11 @@
-#include <stdio.h>
+#include "../../inc/cub3D.h"
 
 int main()
 {
-	printf("Hello World\n");
+	t_data data;
+
+	init_data(&data);
+
 	return (0);
 }
 

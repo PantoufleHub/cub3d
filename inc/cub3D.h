@@ -12,7 +12,7 @@
 
 // # define WIDTH (640)
 // # define HEIGHT (480)
-
+# define VEC_NOT_SET (-2);
 enum e_key
 {
 	K_W  = 13,
@@ -142,4 +142,5 @@ t_calc_info	get_calc_info(int x, t_vector dir, t_vector plane, t_vector pos);
 // void		dda(t_calc_info *calc_info, int **map); // TODO: get back to this version after TEST
 double get_wall_dist(int side, t_calc_info calc_info);
 t_line get_line_height(double wall_dist);
+int	init_data(t_data *data);
 #endif

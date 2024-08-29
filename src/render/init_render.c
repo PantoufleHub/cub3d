@@ -26,7 +26,7 @@ t_calc_info init_sideDist(t_calc_info calc_info, t_vector pos)
 	return (calc_info);
 }
 
-t_calc_info get_calc_info(int x, t_vector dir, t_vector plane, t_vector pos)
+t_calc_info	get_calc_info(int x, t_vector dir, t_vector plane, t_vector pos)
 {
 	t_calc_info	res;
 	double		cameraX;
