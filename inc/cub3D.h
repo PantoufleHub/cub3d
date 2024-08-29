@@ -5,26 +5,14 @@
 # include "../lib/minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <math.h>
-#include <sys/time.h>
+# include <sys/time.h>
+# include "constants.h"
+# include "error_msg.h"
+# include "colors.h"
 
 // # define WIDTH (640)
 // # define HEIGHT (480)
 
-# define BLK "\033[30m"
-# define RED "\033[31m"
-# define GRN "\033[32m"
-# define YEL "\033[33m"
-# define BLU "\033[34m"
-# define MAG "\033[35m"
-# define CYN "\033[36m"
-# define WHT "\033[37m"
-
-# define WIDTH (1920)
-# define HEIGHT (1080)
-# define SPEED (0.5)
-# define ROTSPEED (0.2)
-# define TRUE (1)
-# define FALSE (0)
 enum e_key
 {
 	K_W  = 13,
@@ -108,6 +96,14 @@ typedef struct	s_time
 	float	oldTime;
 }				t_time;
 
+typedef struct s_texture_data
+{
+	int		width;
+	int		height;
+	void	*img;
+	char	*path;
+}	t_texture_data;
+
 typedef struct	s_data
 {
     void	*mlx;
@@ -120,11 +116,17 @@ typedef struct	s_data
     t_vectors	vec;
     int		floor_color;
     int		ceiling_color;
-    t_img_data	*n_img_data;
-    t_img_data	*e_img_data;
-    t_img_data	*s_img_data;
-    t_img_data	*w_img_data;
+    t_texture_data	*textures[4]; // N E S W
+    // t_texture_data	*e_texture_data;
+    // t_texture_data	*s_texture_data;
+    // t_texture_data	*w_texture_data;
 }		t_data;
+
+// PARSING
+int					parse(char *path, t_texture_data *data);
+
+void				init_map_data(t_texture_data *data);
+
 
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color);
