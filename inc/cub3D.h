@@ -9,6 +9,7 @@
 # include "constants.h"
 # include "error_msg.h"
 # include "colors.h"
+# include "colors.h"
 
 // # define WIDTH (640)
 // # define HEIGHT (480)

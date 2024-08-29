@@ -236,11 +236,11 @@ void	get_adjacents(char *lines[3], char (*adjacents)[4], int index)
 		(*adjacents)[3] = lines[1][index - 1];
 	else
 		(*adjacents)[3] = 0;
-	if (lines[0] && ft_strlen(lines[0]) >= index)
+	if (lines[0] && ft_strlen(lines[0]) >= (size_t)index)
 		(*adjacents)[0] = lines[0][index];
 	else
 		(*adjacents)[0] = 0;
-	if (lines[2] && ft_strlen(lines[2]) >= index)
+	if (lines[2] && ft_strlen(lines[2]) >= (size_t)index)
 		(*adjacents)[2] = lines[2][index];
 	else
 		(*adjacents)[2] = 0;
@@ -312,7 +312,7 @@ int	parse_map2(t_list *prev_line, t_list *curr_line, int *status)
 	return (0);
 }
 
-int	parse_map(t_data *data, t_list **map)
+int	parse_map(t_list **map)
 {
 	t_list		*previous_line;
 	static int	status = 0;
@@ -332,7 +332,7 @@ int	parse_map(t_data *data, t_list **map)
 	return (status);
 }
 
-int	read_map(int line_nb, char *line, t_data *data, t_list **map)
+int	read_map(int line_nb, char *line, t_list **map)
 {
 	int		index;
 	char	*line_dup;
@@ -342,7 +342,7 @@ int	read_map(int line_nb, char *line, t_data *data, t_list **map)
 	{
 		line_dup = malloc(ft_strlen(line));
 		if (!line_dup)
-			return (print_err(NULL, 0, ERR_MSG_MALLOC));
+			return (print_err(NULL, line_nb, ERR_MSG_MALLOC));
 		ft_strlcpy(line_dup, line, ft_strlen(line));
 	}
 	else
@@ -449,6 +449,8 @@ int	get_color(int line_nb, char *line, t_data *data)
 
 int	set_data_path(int line_nb, char *line, char **ptr, char *path)
 {
+	// CHECK SI CA FOIRE PTETRE?
+	line_nb = 0; // pr erreur
 	*ptr = ft_strdup(path);
 	printf(GRN"✔ Assigned to "MAG"%c%c"GRN" image: "MAG"%s\n"WHT,
 		line[0], line[1], path);
@@ -568,7 +570,7 @@ int	interpret_line(int line_nb, char *line, t_data *data, t_list **map)
 		parse_map = 1;
 	}
 	if (parse_map)
-		return (read_map(line_nb, line, data, map));
+		return (read_map(line_nb, line, map));
 	else
 	{
 		if (ft_strncmp(line, "\n", 1) == 0)
@@ -636,7 +638,7 @@ int	parse(char *path, t_data *data)
 		return (-1);
 	if (!file_data_filled(data, 0))
 		return (print_err(NULL, 0, ERR_MSG_MISSING));
-	if (parse_map(data, &tmp_map) < 0)
+	if (parse_map(&tmp_map) < 0)
 		return (-1);
 	if (get_player_data(tmp_map, data) < 0)
 		return (-1);
