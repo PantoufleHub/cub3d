@@ -84,14 +84,15 @@ typedef struct	s_line
 	int	drawStart;
 	int	drawEnd;
 }		t_line;
+
 typedef struct	s_img_data
 {
 	void	*img;
 	void	*addr;
-	int		bit_per_pixel;
-	int		size_line;
-	int		endian;
-}				t_img_data;
+	int	bit_per_pixel;
+	int	size_line;
+	int	endian;
+}		t_img_data;
 
 typedef struct	s_mlx 
 {
