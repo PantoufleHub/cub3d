@@ -13,6 +13,9 @@ int	main(int argc, char **argv)
 		printf(RED"\n- Parsing failed -\n\n"WHT);
 	else
 		printf(GRN"\n- Parsing Succesful -\n\n"WHT);
+	ft_hooks(&data);
+	render(&data);
+	mlx_loop(data.mlx);
 	return (EXIT_SUCCESS);
 }
 
