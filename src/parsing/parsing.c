@@ -364,7 +364,7 @@ int	actually_set_color(int line_nb, char *line, int *data_ptr, int rgb[3])
 	if (rgb[0] > 255 || rgb[1] > 255 || rgb[2] > 255
 		|| rgb[0] < 0 || rgb[1] < 0 || rgb[2] < 0)
 		return (print_err(line, line_nb, ERR_MSG_255));
-	*data_ptr = create_trgb(255, rgb[0], rgb[1], rgb[2]);
+	*data_ptr = create_trgb(0, rgb[0], rgb[1], rgb[2]);
 	printf(GRN"✔ Assigned to "MAG"%c"GRN"  color: "WHT"R"GRN"["MAG"%*d"GRN"]"
 		" "WHT"G"GRN"["MAG"%*d"GRN"] "WHT"B"GRN"["MAG"%*d"GRN"]\n"WHT,
 		line[0],
