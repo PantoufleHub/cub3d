@@ -16,7 +16,7 @@
 /// @brief Checks if a string contains one or more of specific characters
 /// @param str 
 /// @param c_arr 
-/// @return 
+/// @return -1 if no, index if yes
 int	c_in_str(char *str, char *c_arr)
 {
 	int	c_index;
@@ -29,12 +29,12 @@ int	c_in_str(char *str, char *c_arr)
 		while (str[s_index])
 		{
 			if (c_arr[c_index] == str[s_index])
-				return (1);
+				return (s_index);
 			s_index++;
 		}
 		c_index++;
 	}
-	return (0);
+	return (-1);
 }
 
 /// @brief Checks if c is in a given array
@@ -645,6 +645,9 @@ int	set_map(t_list *map, t_data *data)
 	nb = 0;
 	while (map)
 	{
+		if (c_in_str((char *)map->content, "NESW") > -1)
+			((char *)map->content)[c_in_str((char *)map->content, "NESW")]
+				= '0';
 		data->map[nb] = ft_strdup((char *)(map->content));
 		map = map->next;
 		nb++;
