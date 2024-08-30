@@ -1,0 +1,10 @@
+C 1,1,1
+F 2,2,2
+NO test_files/valid.xpm
+EA test_files/valid.xpm
+SO test_files/valid.xpm
+WE test_files/valid.xpm
+
+1111
+10N1
+1111
