@@ -633,6 +633,25 @@ int	parse_path(char *path, int *fd)
 	return (0);
 }
 
+int	set_map(t_list *map, t_data *data)
+{
+	int	map_size;
+	int	nb;
+
+	map_size = ft_lstsize(map);
+	printf("Size: %d\n", map_size);
+	data->map = malloc(sizeof(char *) * (ft_lstsize(map) + 1));
+	data->map[map_size] = NULL;
+	nb = 0;
+	while (map)
+	{
+		data->map[nb] = ft_strdup((char *)(map->content));
+		map = map->next;
+		nb++;
+	}
+	return (0);
+}
+
 int	parse(char *path, t_data *data)
 {
 	int				fd;
@@ -650,5 +669,6 @@ int	parse(char *path, t_data *data)
 		return (-1);
 	if (get_player_data(tmp_map, data) < 0)
 		return (-1);
+	set_map(tmp_map, data);
 	return (0);
 }
