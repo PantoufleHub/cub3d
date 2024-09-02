@@ -16,6 +16,7 @@ void render_column(t_line wall, int side,t_data *data)
 	pixel_put_line(data->img, data->x, wall,color);
 	pixel_put_line(data->img, data->x, floor, create_trgb(0, 0, 0, 255));
 }
+
 int	render(t_data *data)
 {
 	int side;
