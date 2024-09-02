@@ -19,9 +19,9 @@ int	ft_keypress(int key, t_data *data)
   if (key == K_S)
   {
     if (data->map[(int)(data->vec.pos.x - data->vec.dir.x* movespeed)][(int)(data->vec.pos.y)] == '0')
-      data->vec.pos.x -= data->vec.dir.x * movespeed;
+		data->vec.pos.x -= data->vec.dir.x * movespeed;
     if (data->map[(int)(data->vec.pos.x)][(int)(data->vec.pos.y - data->vec.dir.y * movespeed)] == '0')
-      data->vec.pos.y -= data->vec.dir.y * movespeed;
+		data->vec.pos.y -= data->vec.dir.y * movespeed;
 	printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
   }
   if (key == K_D)
