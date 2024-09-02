@@ -10,18 +10,18 @@ int	ft_keypress(int key, t_data *data)
   rotSpeed  = data->time.FrameTime * 4.0;
   if (key == K_W)
   {
-    if (data->map[(int)(data->vec.pos.x + data->vec.dir.x* movespeed )][(int)(data->vec.pos.y)] == '0')
-      data->vec.pos.x += data->vec.dir.x * movespeed;
-    if (data->map[(int)(data->vec.pos.x)][(int)(data->vec.pos.y + data->vec.dir.y * movespeed)] == '0')
+    if (data->map[(int)(data->vec.pos.y + data->vec.dir.y* movespeed )][(int)(data->vec.pos.x)] == '0')
       data->vec.pos.y += data->vec.dir.y * movespeed;
+    if (data->map[(int)(data->vec.pos.y)][(int)(data->vec.pos.x + data->vec.dir.x * movespeed)] == '0')
+      data->vec.pos.x += data->vec.dir.x * movespeed;
 	printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
   }
   if (key == K_S)
   {
-    if (data->map[(int)(data->vec.pos.x - data->vec.dir.x* movespeed)][(int)(data->vec.pos.y)] == '0')
-		data->vec.pos.x -= data->vec.dir.x * movespeed;
-    if (data->map[(int)(data->vec.pos.x)][(int)(data->vec.pos.y - data->vec.dir.y * movespeed)] == '0')
-		data->vec.pos.y -= data->vec.dir.y * movespeed;
+    if (data->map[(int)(data->vec.pos.y - data->vec.dir.y * movespeed)][(int)(data->vec.pos.x)] == '0')
+      data->vec.pos.y -= data->vec.dir.y * movespeed;
+    if (data->map[(int)(data->vec.pos.y)][(int)(data->vec.pos.x - data->vec.dir.x * movespeed)] == '0')
+      data->vec.pos.x -= data->vec.dir.x * movespeed;
 	printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
   }
   if (key == K_D)
