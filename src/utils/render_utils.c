@@ -19,7 +19,7 @@ int	wallside(t_data *data, int side)
 	else if (side == 0)
 	{
 		if (data->calc_info.stepX == -1)
-			color = color_north;
+			color = color_north; 
 		if (data->calc_info.stepX == 1)
 			color = color_north / 2; // SOUTH
 	}

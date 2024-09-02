@@ -12,9 +12,9 @@ void	render_column(t_line wall, int side, t_data *data)
 	ceiling.drawEnd = wall.drawStart;
 	floor.drawStart = wall.drawEnd;
 	floor.drawEnd = HEIGHT;
-	pixel_put_line(data->img, data->x, ceiling, create_trgb(0, 0, 255, 0));
+	pixel_put_line(data->img, data->x, ceiling, data->ceiling_color);
 	pixel_put_line(data->img, data->x, wall, color);
-	pixel_put_line(data->img, data->x, floor, create_trgb(0, 0, 0, 255));
+	pixel_put_line(data->img, data->x, floor, data->floor_color);
 }
 
 int	render(t_data *data)

@@ -28,7 +28,7 @@ int	ft_keypress(int key, t_data *data)
     rotations(data,-rotSpeed);
   if (key == K_A)
     rotations(data, rotSpeed);
-  render(data);
+//   render(data);
   return (0);
 }
 
