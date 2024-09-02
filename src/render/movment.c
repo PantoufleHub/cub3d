@@ -1,10 +1,10 @@
 // mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param)
 #include "../../inc/cub3D.h"
 
-int ft_keypress(int key, t_data *data)
+int	ft_keypress(int key, t_data *data)
 {
-  double movespeed;
-  double rotSpeed;
+  double	movespeed;
+  double	rotSpeed;
 
   movespeed = data->time.FrameTime * 7.0;
   rotSpeed  = data->time.FrameTime * 4.0;
@@ -34,7 +34,7 @@ int ft_keypress(int key, t_data *data)
 
 int	ft_hooks(t_data *data)
 {
-  mlx_loop_hook(data->mlx,render ,data);
+  mlx_loop_hook(data->mlx, render ,data);
   mlx_hook(data->win, E_KEYPRESS, 1L<<0, ft_keypress, data);
   // mlx_hook(mlx->mlx_win, 17, 0, ft_buttonquit, data);
   return (0);
