@@ -54,17 +54,18 @@ typedef struct	s_vectors
 
 typedef struct	s_calc_info
 {
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	double	rayDirX;
-	double	rayDirY;
-	int		stepX;
-	int		stepY;
+	int			mapX;
+	int			mapY;
+	double		sideDistX;
+	double		sideDistY;
+	double		deltaDistX;
+	double		deltaDistY;
+	double		perpWallDist;
+	double		rayDirX;
+	double		rayDirY;
+	int			stepX;
+	int			stepY;
+	t_vector	wall_pos;
 }				t_calc_info;
 
 
@@ -99,10 +100,10 @@ typedef struct	s_time
 
 typedef struct s_texture_data
 {
-	int		width;
-	int		height;
-	void	*img;
-	char	*path;
+	int			width;
+	int			height;
+	char		*path;
+	t_img_data	*img_data;
 }	t_texture_data;
 
 typedef struct	s_data
@@ -125,7 +126,7 @@ int					parse(char *path, t_data *data);
 
 void				init_map_data(t_texture_data *data);
 
-
+void	init_texture_data(t_texture_data *data);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color);
 int		create_trgb(int t, int r, int g, int b);

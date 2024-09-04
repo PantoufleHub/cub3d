@@ -17,22 +17,14 @@ void	init_render_info(t_data *data)
 
 void	init_textures(t_texture_data textures[4])
 {
-	textures[0].path = NULL;
-	textures[0].img = NULL;
-	textures[0].width = -1;
-	textures[0].height = -1;
-	textures[1].path = NULL;
-	textures[1].img = NULL;
-	textures[1].width = -1;
-	textures[1].height = -1;
-	textures[2].path = NULL;
-	textures[2].img = NULL;
-	textures[2].width = -1;
-	textures[2].height = -1;
-	textures[3].path = NULL;
-	textures[3].img = NULL;
-	textures[3].width = -1;
-	textures[3].height = -1;
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		init_texture_data(&textures[i]);
+		i++;
+	}
 }
 
 int	init_data(t_data *data)

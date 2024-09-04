@@ -1,5 +1,12 @@
 #include "../../inc/cub3D.h"
 
+// void	render_texture(t_data *data, int height, t_texture_data *texture)
+// {
+// 	data = NULL;
+// 	height = 0;
+// 	printf("Rendering North: %s\n", texture->path);
+// }
+
 int	wallside(t_data *data, int side)
 {
 	int	color_east;
@@ -13,15 +20,24 @@ int	wallside(t_data *data, int side)
 	{
 		if (data->calc_info.stepY == -1)
 			color = color_east;
+			// color = 1;
 		if (data->calc_info.stepY == 1)
 			color = color_east / 2; // WEST
+			// color = 3;
 	}
 	else if (side == 0)
 	{
 		if (data->calc_info.stepX == -1)
-			color = color_north; 
+		{
+			color = color_north;
+			// color = 0;
+			// printf("Walldist: %f\n", data->calc_info.perpWallDist);
+			// printf("NORTH\nWall %%: [%f]\n", data->calc_info.wall_pos.x - (int)data->calc_info.wall_pos.x);
+			// render_texture(data, HEIGHT, &data->textures[0]);
+		}
 		if (data->calc_info.stepX == 1)
 			color = color_north / 2; // SOUTH
+			// color = 2;
 	}
 	return (color);
 }

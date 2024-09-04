@@ -116,8 +116,12 @@ int	print_err(char *line, int line_nb, char *msg)
 
 void	init_texture_data(t_texture_data *data)
 {
-	data->img = NULL;
+	data->img_data = malloc(sizeof(t_img_data));
+	data->img_data->addr = NULL;
+	data->img_data->img = NULL;
 	data->path = NULL;
+	data->height = -1;
+	data->width = -1;
 }
 
 // void	init_data(t_data *data)
@@ -499,7 +503,7 @@ int	set_texture_path(int line_nb, char *line, t_data *data, char *path)
 
 int	open_texture_path(int line_nb, char *line, t_data *data, char *path)
 {
-	void	*img;
+	t_texture_data	*texture;
 
 	if (access(path, F_OK) < 0)
 		return (print_err(line, line_nb, ERR_MSG_NOT_EXIST));
@@ -508,10 +512,21 @@ int	open_texture_path(int line_nb, char *line, t_data *data, char *path)
 	if (ft_strlen(path) < 4
 		|| ft_strncmp(".xpm", path + ft_strlen(path) - 4, 4))
 		return (print_err(line, line_nb, ERR_MSG_FILE_TYPE));
-	img = mlx_xpm_file_to_image(data->mlx, path,
-			&(data->textures[0].width), &(data->textures[0].height));
-	if (!img)
+	if (line[0] == 'N')
+		texture = &data->textures[0];
+	if (line[0] == 'E')
+		texture = &data->textures[1];
+	if (line[0] == 'S')
+		texture = &data->textures[2];
+	if (line[0] == 'W')
+		texture = &data->textures[3];
+	texture->img_data->img = mlx_xpm_file_to_image(data->mlx, path,
+			&(texture->width), &(texture->height));
+	if (!texture->img_data->img)
 		return (print_err(line, line_nb, ERR_MSG_INVALID_XPM));
+	texture->img_data->addr = mlx_get_data_addr(texture->img_data->img,
+		&texture->img_data->bit_per_pixel, &texture->img_data->size_line,
+		&texture->img_data->endian);
 	return (set_texture_path(line_nb, line, data, path));
 }
 
@@ -654,6 +669,14 @@ int	set_map(t_list *map, t_data *data)
 	}
 	return (0);
 }
+
+// int	set_textures(t_data *data)
+// {
+// 	t_texture_data t;
+
+// 	t = data->textures[0];
+// 	data->textures[0].img = mlx_xpm_file_to_image(data->mlx, t.path, &t.width, &t.height);
+// }
 
 int	parse(char *path, t_data *data)
 {

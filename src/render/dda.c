@@ -7,6 +7,8 @@ int	dda(t_calc_info *calc_info, t_data *data)
 
 	hit = 0;
 	side = 0;
+	calc_info->wall_pos.x = -1;
+	calc_info->wall_pos.y = -1;
 	while (hit == 0)
 	{
 		//jump to next map square, either in x-direction, or in y-direction
@@ -23,7 +25,20 @@ int	dda(t_calc_info *calc_info, t_data *data)
 			side = 1;
 		}
 		if(data->map[calc_info->mapY][calc_info->mapX] == '1')
+		{
+			// printf("Hit\nMap: [%d, %d]\n", calc_info->mapX, calc_info->mapY);
+			if (calc_info->sideDistX <= calc_info->sideDistY)
+			{
+				calc_info->wall_pos.x = calc_info->rayDirX * calc_info->sideDistX + data->vec.pos.x;
+				calc_info->wall_pos.y = calc_info->rayDirY * calc_info->sideDistX + data->vec.pos.y;
+			}
+			else
+			{
+				calc_info->wall_pos.x = calc_info->rayDirX * calc_info->sideDistY + data->vec.pos.x;
+				calc_info->wall_pos.y = calc_info->rayDirY * calc_info->sideDistY + data->vec.pos.y;
+			}
 			hit = 1;
+		}
 	}
 	return (side);
 }

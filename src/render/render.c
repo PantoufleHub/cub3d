@@ -5,6 +5,7 @@ void	render_column(t_line wall, int side, t_data *data)
 	t_line	ceiling;
 	t_line	floor;
 	int		color;
+	int test = 0;
 
 	color = 0;
 	color = wallside(data, side);
@@ -12,15 +13,34 @@ void	render_column(t_line wall, int side, t_data *data)
 	ceiling.drawEnd = wall.drawStart;
 	floor.drawStart = wall.drawEnd;
 	floor.drawEnd = HEIGHT;
+
+	// printf("Start: %d | End: %d\n", wall.drawStart, wall.drawEnd);
 	pixel_put_line(data->img, data->x, ceiling, data->ceiling_color);
-	pixel_put_line(data->img, data->x, wall, color);
+	// pixel_put_line(data->img, data->x, wall, color);
+	test = wall.drawStart;
+	int c;
+	int wall_w = WIDTH / data->calc_info.perpWallDist;
+	int wall_h = HEIGHT / data->calc_info.perpWallDist;
+	int	step_x = wall_w / data->textures[0].width;
+	int	step_y = wall_h / data->textures[0].height;
+	// int c = create_trgb(0, 255, 0, 0);
+	// printf("Wall pos  [ %f , %f ]\n", data->calc_info.wall_pos.x, data->calc_info.wall_pos.y);
+	// printf("Wall size [ %d , %d ]\n", wall_w, wall_h);
+	while (test < wall.drawEnd)
+	{
+		// printf("CLACULDUCUL: %d, %d, %d, %d\n", test, wall.drawStart, wall.drawEnd, wall.drawEnd-wall.drawStart/4);
+		c = ((int *)(data->textures[0].img_data->addr))[((test - wall.drawStart)/ step_y) * data->textures[0].width + (int)((data->calc_info.wall_pos.x)/ step_x)];
+		// printf("Color: %d\n", c);
+		// mlx_pixel_put(data->mlx, data->win, data->x, test, c);
+		my_mlx_pixel_put(&data->img, data->x, test, c);
+		test++;
+	}
 	pixel_put_line(data->img, data->x, floor, data->floor_color);
 }
 
 int	render(t_data *data)
 {
 	int		side;
-	double	wall_dist;
 	t_line	wall;
 
 	data->x = 0;
@@ -32,8 +52,8 @@ int	render(t_data *data)
 		data->calc_info = get_calc_info(data->x, data->vec.dir, data->vec.plane,
 				data->vec.pos);
 		side = dda(&data->calc_info, data);
-		wall_dist = get_wall_dist(side, data->calc_info);
-		wall = get_line_height(wall_dist);
+		data->calc_info.perpWallDist = get_wall_dist(side, data->calc_info);
+		wall = get_line_height(data->calc_info.perpWallDist);
 		render_column(wall, side, data);
 		data->x++;
 	}
