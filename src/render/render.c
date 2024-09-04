@@ -35,8 +35,10 @@ void	render_column(t_line wall, int side, t_data *data)
 		int n = ((test - wall.drawStart)/ step_y) * data->textures[0].width
 			+ (int)((fmod(data->calc_info.wall_pos.x, 1.0) * (wall_w))/step_x);
 		// int n = fmod(data->calc_info.wall_pos.x, 1.0) * (double)data->textures[0].width;
-		if (n < 0 || n > data->textures[0].width * data->textures[0].height)
-			printf("tisouci\n"), n = 0;
+		if (n < 0)
+			printf("ti souci\n"), n = 0;
+		if (n > data->textures[0].width * data->textures[0].height)
+			printf("gro souci\n"), n = data->textures[0].width * data->textures[0].height;
 		c = ((int *)(data->textures[0].img_data->addr))[n];
 		// printf("Color: %d\n", c);
 		// mlx_pixel_put(data->mlx, data->win, data->x, test, c);
