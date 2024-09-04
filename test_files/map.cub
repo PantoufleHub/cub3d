@@ -1,9 +1,9 @@
 C 189,23,145
 F 25,120,120
-NO test_files/4colors.xpm
-EA test_files/4colors.xpm
-SO test_files/4colors.xpm
-WE test_files/4colors.xpm
+NO test_files/img/spaghet.xpm
+EA test_files/img/4colors.xpm
+SO test_files/img/4colors.xpm
+WE test_files/img/4colors.xpm
 
 11111111111
 10000000001
