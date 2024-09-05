@@ -206,8 +206,8 @@ void	set_player_data(char c, int col, int row, t_data *data)
 		data->vec.plane.x = -0.66;
 		data->vec.plane.y = 0;
 	}
-	data->vec.pos.x = (double)col;
-	data->vec.pos.y = (double)row;
+	data->vec.pos.x = (double)(col + 0.5);
+	data->vec.pos.y = (double)(row + 0.5);
 }
 
 int	get_player_data(t_list *map, t_data *data)

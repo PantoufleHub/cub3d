@@ -19,11 +19,11 @@ void	set_wallside(t_data *data, int side)
 	if (side == 1)
 	{
 		if (data->calc_info.stepY == -1)
-			data->calc_info.wall_side = 1;
+			data->calc_info.wall_side = 3;
 			// color = color_east;
 			// color = 1;
 		if (data->calc_info.stepY == 1)
-			data->calc_info.wall_side = 3;
+			data->calc_info.wall_side = 1;
 			// color = color_east / 2; // WEST
 			// color = 3;
 	}
