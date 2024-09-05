@@ -55,7 +55,7 @@ int	render(t_data *data)
       	else
 			data->calc_info.wall_x = data->vec.pos.x + data->calc_info.perpWallDist * data->calc_info.rayDirX;
 		data->calc_info.wall_x = (fmod(data->calc_info.wall_x, 1.0));
-		printf("Wallx: %f\n", data->calc_info.wall_x);
+		// printf("Wallx: %f\n", data->calc_info.wall_x);
 		set_wallside(data, side);
 		data->calc_info.tex_x = (int)(data->calc_info.wall_x * (double)(data->textures[data->calc_info.wall_side].width));
     	if(side == 0 && data->calc_info.rayDirX > 0)

@@ -13,9 +13,10 @@ int	main(int argc, char **argv)
 	if (parse(argv[1], &data) < 0)
 		return (printf(RED"\n- Parsing failed -\n\n"WHT), EXIT_FAILURE);
 	else
-		printf(GRN"\n- Parsing Succesful -\n\n"WHT);
+		printf(GRN"\n- Parsing Succesful -\n"CYN"Have fun!"WHT"\n");
 	ft_hooks(&data);
 	render(&data);
+	mlx_hook(data.win, 17, 0, on_destroy, NULL);
 	mlx_loop(data.mlx);
 	return (EXIT_SUCCESS);
 }

@@ -145,4 +145,5 @@ double get_wall_dist(int side, t_calc_info calc_info);
 t_line get_line_height(double wall_dist);
 int	init_data(t_data *data);
 void	set_wallside(t_data *data, int side);
+int	on_destroy(void);
 #endif

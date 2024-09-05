@@ -654,7 +654,7 @@ int	set_map(t_list *map, t_data *data)
 	int	nb;
 
 	map_size = ft_lstsize(map);
-	printf("Size: %d\n", map_size);
+	// printf("Size: %d\n", map_size);
 	data->map = malloc(sizeof(char *) * (ft_lstsize(map) + 1));
 	data->map[map_size] = NULL;
 	nb = 0;
@@ -687,6 +687,7 @@ int	parse(char *path, t_data *data)
 	if (parse_path(path, &fd) < 0)
 		return (-1);
 	// init_data(data);
+	printf(YEL"\n[ Parsing file content ]\n"WHT);
 	if (parse_file(fd, data, &tmp_map) < 0)
 		return (-1);
 	if (!file_data_filled(data, 0))
