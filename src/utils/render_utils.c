@@ -7,39 +7,43 @@
 // 	printf("Rendering North: %s\n", texture->path);
 // }
 
-int	wallside(t_data *data, int side)
+void	set_wallside(t_data *data, int side)
 {
-	int	color_east;
-	int	color_north;
-	int	color;
+	// int	color_east;
+	// int	color_north;
+	// int	color;
 
-	color = 0;
-	color_east = create_trgb(0, 255, 0, 0);
-	color_north = create_trgb(0, 255, 255, 255);
+	// color = 0;
+	// color_east = create_trgb(0, 255, 0, 0);
+	// color_north = create_trgb(0, 255, 255, 255);
 	if (side == 1)
 	{
 		if (data->calc_info.stepY == -1)
-			color = color_east;
+			data->calc_info.wall_side = 1;
+			// color = color_east;
 			// color = 1;
 		if (data->calc_info.stepY == 1)
-			color = color_east / 2; // WEST
+			data->calc_info.wall_side = 3;
+			// color = color_east / 2; // WEST
 			// color = 3;
 	}
 	else if (side == 0)
 	{
 		if (data->calc_info.stepX == -1)
 		{
-			color = color_north;
+			data->calc_info.wall_side = 0;
+			// color = color_north;
 			// color = 0;
 			// printf("Walldist: %f\n", data->calc_info.perpWallDist);
 			// printf("NORTH\nWall %%: [%f]\n", data->calc_info.wall_pos.x - (int)data->calc_info.wall_pos.x);
 			// render_texture(data, HEIGHT, &data->textures[0]);
 		}
 		if (data->calc_info.stepX == 1)
-			color = color_north / 2; // SOUTH
+			data->calc_info.wall_side = 2;
+			// color = color_north / 2; // SOUTH
 			// color = 2;
 	}
-	return (color);
+	// return (color);
 }
 
 double	get_wall_dist(int side, t_calc_info calc_info)
@@ -51,7 +55,7 @@ double	get_wall_dist(int side, t_calc_info calc_info)
 	else
 		wall_dist = (calc_info.sideDistY - calc_info.deltaDistY);
 	if (wall_dist == 0)
-		wall_dist = 1;
+		wall_dist = 0.1;
 	return (wall_dist);
 }
 

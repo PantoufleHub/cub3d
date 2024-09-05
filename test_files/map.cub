@@ -1,14 +1,14 @@
 C 189,23,145
 F 25,120,120
-NO test_files/img/spaghet.xpm
+NO test_files/img/apple.xpm
+SO test_files/img/valid.xpm
 EA test_files/img/4colors.xpm
-SO test_files/img/4colors.xpm
-WE test_files/img/4colors.xpm
+WE test_files/img/spaghet.xpm
 
 11111111111
 10000000001
 10000000001
-10000N00001
+10000E00001
 10000000001
 10000000001
 11111111111

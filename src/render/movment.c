@@ -14,7 +14,7 @@ int	ft_keypress(int key, t_data *data)
       data->vec.pos.y += data->vec.dir.y * movespeed;
     if (data->map[(int)(data->vec.pos.y)][(int)(data->vec.pos.x + data->vec.dir.x * movespeed)] == '0')
       data->vec.pos.x += data->vec.dir.x * movespeed;
-	printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
+	// printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
   }
   if (key == K_S)
   {
@@ -22,7 +22,7 @@ int	ft_keypress(int key, t_data *data)
       data->vec.pos.y -= data->vec.dir.y * movespeed;
     if (data->map[(int)(data->vec.pos.y)][(int)(data->vec.pos.x - data->vec.dir.x * movespeed)] == '0')
       data->vec.pos.x -= data->vec.dir.x * movespeed;
-	printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
+	// printf("Pos x %lf\nPos Y %lf\n",data->vec.pos.x,data->vec.pos.y);
   }
   if (key == K_D)
     rotations(data,-rotSpeed);

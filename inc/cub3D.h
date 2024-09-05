@@ -65,7 +65,9 @@ typedef struct	s_calc_info
 	double		rayDirY;
 	int			stepX;
 	int			stepY;
-	t_vector	wall_pos;
+	double		wall_x;
+	int			tex_x;
+	int			wall_side;
 }				t_calc_info;
 
 
@@ -136,10 +138,11 @@ int		ft_hooks(t_data *data);
 long	get_time_elapse(struct timeval ref_time_of_day);
 void	rotations(t_data *data, double rotspeed);
 struct timeval	init_timer(void);
-int wallside(t_data *data, int side);
+// int wallside(t_data *data, int side);
 t_calc_info	get_calc_info(int x, t_vector dir, t_vector plane, t_vector pos);
 // void		dda(t_calc_info *calc_info, int **map); // TODO: get back to this version after TEST
 double get_wall_dist(int side, t_calc_info calc_info);
 t_line get_line_height(double wall_dist);
 int	init_data(t_data *data);
+void	set_wallside(t_data *data, int side);
 #endif
