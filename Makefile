@@ -10,7 +10,7 @@ MLX_DIR		=	lib/mlx/
 #MLX_DIR		=	lib/minilibx-linux/
 MAIN_SRCS	=	main
 RENDER_SRCS	=	init_render dda render movment rotation
-UTILS_SRCS	=	render_utils pixel_put_utils color time colors
+UTILS_SRCS	=	render_utils pixel_put_utils time colors
 PARSE_SRCS	=	parsing
 INIT_SRCS	=	init
 

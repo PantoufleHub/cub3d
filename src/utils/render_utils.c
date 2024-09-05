@@ -9,41 +9,20 @@
 
 void	set_wallside(t_data *data, int side)
 {
-	// int	color_east;
-	// int	color_north;
-	// int	color;
-
-	// color = 0;
-	// color_east = create_trgb(0, 255, 0, 0);
-	// color_north = create_trgb(0, 255, 255, 255);
 	if (side == 1)
 	{
 		if (data->calc_info.stepY == -1)
 			data->calc_info.wall_side = 3;
-			// color = color_east;
-			// color = 1;
 		if (data->calc_info.stepY == 1)
 			data->calc_info.wall_side = 1;
-			// color = color_east / 2; // WEST
-			// color = 3;
 	}
 	else if (side == 0)
 	{
 		if (data->calc_info.stepX == -1)
-		{
 			data->calc_info.wall_side = 0;
-			// color = color_north;
-			// color = 0;
-			// printf("Walldist: %f\n", data->calc_info.perpWallDist);
-			// printf("NORTH\nWall %%: [%f]\n", data->calc_info.wall_pos.x - (int)data->calc_info.wall_pos.x);
-			// render_texture(data, HEIGHT, &data->textures[0]);
-		}
 		if (data->calc_info.stepX == 1)
 			data->calc_info.wall_side = 2;
-			// color = color_north / 2; // SOUTH
-			// color = 2;
 	}
-	// return (color);
 }
 
 double	get_wall_dist(int side, t_calc_info calc_info)
@@ -83,4 +62,3 @@ void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color)
 	while (vertical_line.drawStart != vertical_line.drawEnd)
 		my_mlx_pixel_put(&img, x, vertical_line.drawStart++, color);
 }
-
