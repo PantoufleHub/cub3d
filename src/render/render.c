@@ -17,7 +17,7 @@ void	render_column(t_line wall, t_data *data)
 	pixel_put_line(data->img, data->x, ceiling, data->ceiling_color);
 	// pixel_put_line(data->img, data->x, wall, color);
 	
-	int line_height = (wall.drawEnd - wall.drawStart);
+	int line_height = HEIGHT / data->calc_info.perpWallDist;
 	if (line_height == 0)
 		line_height = 1;
 	double step = 1.0 * (double)data->textures[data->calc_info.wall_side].height / (double)line_height;
