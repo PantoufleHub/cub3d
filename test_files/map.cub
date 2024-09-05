@@ -1,9 +1,9 @@
 C 189,23,145
 F 25,120,120
-NO test_files/img/apple.xpm
-SO test_files/img/valid.xpm
-EA test_files/img/4colors.xpm
-WE test_files/img/spaghet.xpm
+NO test_files/img/libre.xpm
+EA test_files/img/work.xpm
+SO test_files/img/yo.xpm
+WE test_files/img/water.xpm
 
 11111111111
 10010000001
