@@ -34,6 +34,7 @@ int	init_data(t_data *data)
 	data->img.addr = mlx_get_data_addr (data->img.img,
 			&data->img.bit_per_pixel, &data->img.size_line, &data->img.endian);
 	data->map = NULL;
+	data->nb_rows = -1;
 	init_textures(data->textures);
 	data->floor_color = -1;
 	data->ceiling_color = -1;

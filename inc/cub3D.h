@@ -118,6 +118,7 @@ typedef struct	s_data
 	t_img_data	img;
 	int		x;
 	char	**map;
+	int		nb_rows;
 	t_time	time;
 	t_calc_info	calc_info;
 	t_vectors	vec;
