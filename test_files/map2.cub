@@ -1,11 +1,16 @@
 C 189,23,145
 F 25,120,120
-NO test_files/img/libre.xpm
-EA test_files/img/work.xpm
-SO test_files/img/yo.xpm
-WE test_files/img/water.xpm
+EA test_files/img/e2.xpm
+NO test_files/img/n2.xpm
+SO test_files/img/s2.xpm
+WE test_files/img/w2.xpm
 
 
 1111111
-1111N11
+1101011
+1001001
+1100001
+110N011
+1000001
+1001001
 1111111
