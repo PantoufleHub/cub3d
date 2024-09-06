@@ -1,8 +1,8 @@
-C 189,23,145
-F 25,120,120
-NO test_files/img/libre.xpm
+C 30,120,180
+F 120,40,80
+NO test_files/img/apple.xpm
 EA test_files/img/work.xpm
-SO test_files/img/yo.xpm
+SO test_files/img/valid.xpm
 WE test_files/img/water.xpm
 
 11111111111

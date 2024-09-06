@@ -670,13 +670,15 @@ int	set_map(t_list *map, t_data *data)
 	return (0);
 }
 
-// int	set_textures(t_data *data)
-// {
-// 	t_texture_data t;
+int	get_nb_rows(char **map)
+{
+	int	nb;
 
-// 	t = data->textures[0];
-// 	data->textures[0].img = mlx_xpm_file_to_image(data->mlx, t.path, &t.width, &t.height);
-// }
+	nb = 0;
+	while (map && map[nb])
+		nb++;
+	return (nb);
+}
 
 int	parse(char *path, t_data *data)
 {
@@ -686,7 +688,6 @@ int	parse(char *path, t_data *data)
 	printf(YEL"\n[ Parsing path \""CYN"%s"YEL"\" ]\n"WHT, path);
 	if (parse_path(path, &fd) < 0)
 		return (-1);
-	// init_data(data);
 	printf(YEL"\n[ Parsing file content ]\n"WHT);
 	if (parse_file(fd, data, &tmp_map) < 0)
 		return (-1);
@@ -697,5 +698,6 @@ int	parse(char *path, t_data *data)
 	if (get_player_data(tmp_map, data) < 0)
 		return (-1);
 	set_map(tmp_map, data);
+	data->nb_rows = get_nb_rows(data->map);
 	return (0);
 }
