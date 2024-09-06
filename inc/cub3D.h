@@ -150,4 +150,6 @@ t_line get_line_height(double wall_dist);
 int	init_data(t_data *data);
 void	set_wallside(t_data *data, int side);
 int	on_destroy(void);
+int	w_is_in_bound(t_data *data, double movespeed);
+int	s_is_in_bound(t_data *data, double movespeed);
 #endif

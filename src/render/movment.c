@@ -1,20 +1,25 @@
 // mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param)
 #include "../../inc/cub3D.h"
 
-int is_in_bounds(t_data *data, int movespeed)
+void	forward(t_data *data, double movespeed)
 {
-	int forward;
-	int backward;
-
-	forward  = (int)(data->vec.pos.y + data->vec.dir.y * movespeed);
-	backward = (int)(data->vec.pos.y - data->vec.dir.y * movespeed);
-
-	if(data->row < forward || data->row < backward)
-		return (FALSE);
-	else
-		return (TRUE);
+	if (data->map[(int)(data->vec.pos.y + data->vec.dir.y * movespeed)]
+		[(int)(data->vec.pos.x)] == '0')
+		data->vec.pos.y += data->vec.dir.y * movespeed;
+	if (data->map[(int)(data->vec.pos.y)]
+		[(int)(data->vec.pos.x + data->vec.dir.x * movespeed)] == '0')
+		data->vec.pos.x += data->vec.dir.x * movespeed;
 }
 
+void	backward(t_data *data, double movespeed)
+{
+	if (data->map[(int)(data->vec.pos.y - data->vec.dir.y * movespeed)]
+		[(int)(data->vec.pos.x)] == '0')
+		data->vec.pos.y -= data->vec.dir.y * movespeed;
+	if (data->map[(int)(data->vec.pos.y)] 
+		[(int)(data->vec.pos.x - data->vec.dir.x * movespeed)] == '0') 
+		data->vec.pos.x -= data->vec.dir.x * movespeed;
+}
 int	ft_keypress(int key, t_data *data)
 {
 	double	movespeed;
@@ -25,21 +30,13 @@ int	ft_keypress(int key, t_data *data)
 
 	if (key == K_W)
 	{
-		if (data->map[(int)(data->vec.pos.y + data->vec.dir.y * movespeed)]
-			[(int)(data->vec.pos.x)] == '0')
-			data->vec.pos.y += data->vec.dir.y * movespeed;
-		if (data->map[(int)(data->vec.pos.y)]
-			[(int)(data->vec.pos.x + data->vec.dir.x * movespeed)] == '0')
-			data->vec.pos.x += data->vec.dir.x * movespeed;
+		if(w_is_in_bound(data, movespeed))
+			forward(data, movespeed);
 	}
 	if (key == K_S)
 	{
-		if (data->map[(int)(data->vec.pos.y - data->vec.dir.y * movespeed)]
-			[(int)(data->vec.pos.x)] == '0')
-			data->vec.pos.y -= data->vec.dir.y * movespeed;
-		if (data->map[(int)(data->vec.pos.y)]
-			[(int)(data->vec.pos.x - data->vec.dir.x * movespeed)] == '0')
-			data->vec.pos.x -= data->vec.dir.x * movespeed;
+		if(s_is_in_bound(data, movespeed))
+			backward(data, movespeed);
 	}
 	if (key == K_D)
 		rotations(data, -rotSpeed);
