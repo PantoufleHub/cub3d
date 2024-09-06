@@ -11,6 +11,9 @@
 # include "colors.h"
 # include "colors.h"
 
+
+# define TRUE (1)
+# define FALSE (0)
 // # define WIDTH (640)
 // # define HEIGHT (480)
 

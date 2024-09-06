@@ -1,13 +1,28 @@
 // mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param)
 #include "../../inc/cub3D.h"
 
+int is_in_bounds(t_data *data, int movespeed)
+{
+	int forward;
+	int backward;
+
+	forward  = (int)(data->vec.pos.y + data->vec.dir.y * movespeed);
+	backward = (int)(data->vec.pos.y - data->vec.dir.y * movespeed);
+
+	if(data->row < forward || data->row < backward)
+		return (FALSE);
+	else
+		return (TRUE);
+}
+
 int	ft_keypress(int key, t_data *data)
 {
 	double	movespeed;
 	double	rotSpeed;
 
 	movespeed = data->time.FrameTime * 8.0;
-	rotSpeed = data->time.FrameTime * 10.0;
+	rotSpeed  = data->time.FrameTime * 10.0;
+
 	if (key == K_W)
 	{
 		if (data->map[(int)(data->vec.pos.y + data->vec.dir.y * movespeed)]
