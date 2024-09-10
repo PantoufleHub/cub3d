@@ -14,6 +14,7 @@
 // # define WIDTH (640)
 // # define HEIGHT (480)
 
+# ifdef __APPLE__
 enum e_key
 {
 	K_W  = 13,
@@ -22,16 +23,18 @@ enum e_key
 	K_D  = 2,
 	K_ESC = 53
 };
+# endif
 
-// NOTE: FOR LINUX
-// enum e_key
-// {
-// 	K_W  = 119,
-// 	K_A  = 97,
-// 	K_S  = 115,
-// 	K_D  = 100,
-// 	K_ESC = 65307
-// };
+# ifdef __unix__
+enum e_key
+{
+	K_W  = 119,
+	K_A  = 97,
+	K_S  = 115,
+	K_D  = 100,
+	K_ESC = 65307
+};
+# endif
 
 enum e_events
 {
