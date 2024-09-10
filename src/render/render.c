@@ -37,7 +37,7 @@ void	draw_minimap(t_data *data)
 	int x = 0;
 	int y = 0;
 	// int c = 0xAA000000;
-	int tile_size = 14;
+	int tile_size = 20;
 
 	// MAP NORMALE ENTIERE
 	// while (y < data->nb_rows * tile_size)
