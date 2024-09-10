@@ -589,7 +589,7 @@ int	interpret_line(int line_nb, char *line, t_data *data, t_list **map)
 	{
 		if (ft_strncmp(line, "\n", 1) == 0)
 			return (0);
-		printf(YEL"\n[ Parsing map ]\n"WHT);
+		// printf(YEL"\n[ Parsing map ]\n"WHT);
 		parse_map = 1;
 	}
 	if (parse_map)
@@ -693,6 +693,7 @@ int	parse(char *path, t_data *data)
 		return (-1);
 	if (!file_data_filled(data, 0))
 		return (print_err(NULL, 0, ERR_MSG_MISSING));
+	printf(YEL"\n[ Parsing map ]\n"WHT);
 	if (parse_map(&tmp_map) < 0)
 		return (-1);
 	if (get_player_data(tmp_map, data) < 0)
