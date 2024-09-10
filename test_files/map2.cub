@@ -1,10 +1,16 @@
-C 1,2,3
-F 213,211,21
-EA files/.xpm
-NO files/.xpm
-SO files/.xpm
-WE files/.xpm
+C 189,23,145
+F 25,120,120
+EA test_files/img/e2.xpm
+NO test_files/img/n2.xpm
+SO test_files/img/s2.xpm
+WE test_files/img/w2.xpm
 
-111111111111111   1
-1001  101 1N101  101
-111111111 11 11   1
+
+1111111
+1101011
+1001001
+1100001
+110N011
+1000001
+1001001
+1111111

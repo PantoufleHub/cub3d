@@ -35,6 +35,5 @@ long	get_time_elapse(struct timeval ref_time_of_day)
 		current_time_ms += usec_ms(now.tv_usec)
 			- usec_ms(ref_time_of_day.tv_usec);
 	}
-
 	return (current_time_ms);
 }

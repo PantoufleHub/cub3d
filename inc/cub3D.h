@@ -11,6 +11,9 @@
 # include "colors.h"
 # include "colors.h"
 
+
+# define TRUE (1)
+# define FALSE (0)
 // # define WIDTH (640)
 // # define HEIGHT (480)
 
@@ -57,17 +60,20 @@ typedef struct	s_vectors
 
 typedef struct	s_calc_info
 {
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	double	rayDirX;
-	double	rayDirY;
-	int		stepX;
-	int		stepY;
+	int			mapX;
+	int			mapY;
+	double		sideDistX;
+	double		sideDistY;
+	double		deltaDistX;
+	double		deltaDistY;
+	double		perpWallDist;
+	double		rayDirX;
+	double		rayDirY;
+	int			stepX;
+	int			stepY;
+	double		wall_x;
+	int			tex_x;
+	int			wall_side;
 }				t_calc_info;
 
 
@@ -102,10 +108,10 @@ typedef struct	s_time
 
 typedef struct s_texture_data
 {
-	int		width;
-	int		height;
-	void	*img;
-	char	*path;
+	int			width;
+	int			height;
+	char		*path;
+	t_img_data	*img_data;
 }	t_texture_data;
 
 typedef struct	s_data
@@ -115,6 +121,7 @@ typedef struct	s_data
 	t_img_data	img;
 	int		x;
 	char	**map;
+	int		nb_rows;
 	t_time	time;
 	t_calc_info	calc_info;
 	t_vectors	vec;
@@ -128,7 +135,7 @@ int					parse(char *path, t_data *data);
 
 void				init_map_data(t_texture_data *data);
 
-
+void	init_texture_data(t_texture_data *data);
 void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color);
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color);
 int		create_trgb(int t, int r, int g, int b);
@@ -138,10 +145,14 @@ int		ft_hooks(t_data *data);
 long	get_time_elapse(struct timeval ref_time_of_day);
 void	rotations(t_data *data, double rotspeed);
 struct timeval	init_timer(void);
-int wallside(t_data *data, int side);
+// int wallside(t_data *data, int side);
 t_calc_info	get_calc_info(int x, t_vector dir, t_vector plane, t_vector pos);
 // void		dda(t_calc_info *calc_info, int **map); // TODO: get back to this version after TEST
 double get_wall_dist(int side, t_calc_info calc_info);
 t_line get_line_height(double wall_dist);
 int	init_data(t_data *data);
+void	set_wallside(t_data *data, int side);
+int	on_destroy(void);
+int	w_is_in_bound(t_data *data, double movespeed);
+int	s_is_in_bound(t_data *data, double movespeed);
 #endif

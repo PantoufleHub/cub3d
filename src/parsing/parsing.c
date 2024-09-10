@@ -116,8 +116,12 @@ int	print_err(char *line, int line_nb, char *msg)
 
 void	init_texture_data(t_texture_data *data)
 {
-	data->img = NULL;
+	data->img_data = malloc(sizeof(t_img_data));
+	data->img_data->addr = NULL;
+	data->img_data->img = NULL;
 	data->path = NULL;
+	data->height = -1;
+	data->width = -1;
 }
 
 // void	init_data(t_data *data)
@@ -202,8 +206,8 @@ void	set_player_data(char c, int col, int row, t_data *data)
 		data->vec.plane.x = -0.66;
 		data->vec.plane.y = 0;
 	}
-	data->vec.pos.x = (double)col;
-	data->vec.pos.y = (double)row;
+	data->vec.pos.x = (double)(col + 0.5);
+	data->vec.pos.y = (double)(row + 0.5);
 }
 
 int	get_player_data(t_list *map, t_data *data)
@@ -499,7 +503,7 @@ int	set_texture_path(int line_nb, char *line, t_data *data, char *path)
 
 int	open_texture_path(int line_nb, char *line, t_data *data, char *path)
 {
-	void	*img;
+	t_texture_data	*texture;
 
 	if (access(path, F_OK) < 0)
 		return (print_err(line, line_nb, ERR_MSG_NOT_EXIST));
@@ -508,10 +512,21 @@ int	open_texture_path(int line_nb, char *line, t_data *data, char *path)
 	if (ft_strlen(path) < 4
 		|| ft_strncmp(".xpm", path + ft_strlen(path) - 4, 4))
 		return (print_err(line, line_nb, ERR_MSG_FILE_TYPE));
-	img = mlx_xpm_file_to_image(data->mlx, path,
-			&(data->textures[0].width), &(data->textures[0].height));
-	if (!img)
+	if (line[0] == 'N')
+		texture = &data->textures[0];
+	if (line[0] == 'E')
+		texture = &data->textures[1];
+	if (line[0] == 'S')
+		texture = &data->textures[2];
+	if (line[0] == 'W')
+		texture = &data->textures[3];
+	texture->img_data->img = mlx_xpm_file_to_image(data->mlx, path,
+			&(texture->width), &(texture->height));
+	if (!texture->img_data->img)
 		return (print_err(line, line_nb, ERR_MSG_INVALID_XPM));
+	texture->img_data->addr = mlx_get_data_addr(texture->img_data->img,
+		&texture->img_data->bit_per_pixel, &texture->img_data->size_line,
+		&texture->img_data->endian);
 	return (set_texture_path(line_nb, line, data, path));
 }
 
@@ -639,7 +654,7 @@ int	set_map(t_list *map, t_data *data)
 	int	nb;
 
 	map_size = ft_lstsize(map);
-	printf("Size: %d\n", map_size);
+	// printf("Size: %d\n", map_size);
 	data->map = malloc(sizeof(char *) * (ft_lstsize(map) + 1));
 	data->map[map_size] = NULL;
 	nb = 0;
@@ -655,6 +670,16 @@ int	set_map(t_list *map, t_data *data)
 	return (0);
 }
 
+int	get_nb_rows(char **map)
+{
+	int	nb;
+
+	nb = 0;
+	while (map && map[nb])
+		nb++;
+	return (nb);
+}
+
 int	parse(char *path, t_data *data)
 {
 	int				fd;
@@ -663,7 +688,7 @@ int	parse(char *path, t_data *data)
 	printf(YEL"\n[ Parsing path \""CYN"%s"YEL"\" ]\n"WHT, path);
 	if (parse_path(path, &fd) < 0)
 		return (-1);
-	// init_data(data);
+	printf(YEL"\n[ Parsing file content ]\n"WHT);
 	if (parse_file(fd, data, &tmp_map) < 0)
 		return (-1);
 	if (!file_data_filled(data, 0))
@@ -673,5 +698,6 @@ int	parse(char *path, t_data *data)
 	if (get_player_data(tmp_map, data) < 0)
 		return (-1);
 	set_map(tmp_map, data);
+	data->nb_rows = get_nb_rows(data->map);
 	return (0);
 }
