@@ -22,6 +22,11 @@
 # define TRUE (1)
 # define FALSE (0)
 
+# define MAP_WIDTH 100
+# define MAP_HEIGHT 100
+# define MAP_X 30
+# define MAP_Y 30
+
 # define VEC_INIT (-2)
 
 # define KEYCODE_LEFT = 0
