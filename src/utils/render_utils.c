@@ -12,16 +12,16 @@ void	set_wallside(t_data *data, int side)
 	if (side == 1)
 	{
 		if (data->calc_info.stepY == -1)
-			data->calc_info.wall_side = 3;
+			data->calc_info.wall_side = 0;
 		if (data->calc_info.stepY == 1)
-			data->calc_info.wall_side = 1;
+			data->calc_info.wall_side = 2;
 	}
 	else if (side == 0)
 	{
 		if (data->calc_info.stepX == -1)
-			data->calc_info.wall_side = 0;
+			data->calc_info.wall_side = 3;
 		if (data->calc_info.stepX == 1)
-			data->calc_info.wall_side = 2;
+			data->calc_info.wall_side = 1;
 	}
 }
 

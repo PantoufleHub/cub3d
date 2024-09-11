@@ -39,9 +39,9 @@ int	ft_keypress(int key, t_data *data)
 			backward(data, movespeed);
 	}
 	if (key == K_D)
-		rotations(data, -rotSpeed);
-	if (key == K_A)
 		rotations(data, rotSpeed);
+	if (key == K_A)
+		rotations(data, -rotSpeed);
 	if (key == K_ESC)
 		on_destroy();
 	return (0);

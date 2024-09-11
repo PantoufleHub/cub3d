@@ -180,31 +180,31 @@ void	set_player_data(char c, int col, int row, t_data *data)
 {
 	if (c == 'N')
 	{
-		data->vec.dir.x = -1;
-		data->vec.dir.y = 0;
-		data->vec.plane.x = 0;
-		data->vec.plane.y = 0.66;
-	}
-	if (c == 'E')
-	{
 		data->vec.dir.x = 0;
-		data->vec.dir.y = 1;
+		data->vec.dir.y = -1;
 		data->vec.plane.x = 0.66;
 		data->vec.plane.y = 0;
 	}
-	if (c == 'S')
+	if (c == 'E')
 	{
 		data->vec.dir.x = 1;
 		data->vec.dir.y = 0;
 		data->vec.plane.x = 0;
-		data->vec.plane.y = -0.66;
+		data->vec.plane.y = 0.66;
+	}
+	if (c == 'S')
+	{
+		data->vec.dir.x = 0;
+		data->vec.dir.y = 1;
+		data->vec.plane.x = -0.66;
+		data->vec.plane.y = 0;
 	}
 	if (c == 'W')
 	{
-		data->vec.dir.x = 0;
-		data->vec.dir.y = -1;
-		data->vec.plane.x = -0.66;
-		data->vec.plane.y = 0;
+		data->vec.dir.x = -1;
+		data->vec.dir.y = 0;
+		data->vec.plane.x = 0;
+		data->vec.plane.y = -0.66;
 	}
 	data->vec.pos.x = (double)(col + 0.5);
 	data->vec.pos.y = (double)(row + 0.5);
