@@ -1,15 +1,23 @@
 NAME		=	cub3D
 
+OS			=	$(shell uname -s)
+
+ifeq ($(OS),Linux)
+	MLX_DIR			=	lib/minilibx-linux/
+	GRAPHICS_LIB	= -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+else ifeq ($(OS),Darwin)
+	MLX_DIR			=	lib/mlx/
+	GRAPHICS_LIB	= -framework OpenGL -framework AppKit
+endif
+
 INC_DIR		=	inc/
 SRC_DIR		=	src/
 SRC_SUBDIRS	=	main render utils parsing init
 OBJ_DIR		=	obj/
 DEP_DIR		=	$(OBJ_DIR)dep/
 LIBFT_DIR	=	lib/libft/
-MLX_DIR		=	lib/mlx/
-#MLX_DIR		=	lib/minilibx-linux/
 MAIN_SRCS	=	main
-RENDER_SRCS	=	init_render dda render movment rotation
+RENDER_SRCS	=	init_render dda render movement rotation
 UTILS_SRCS	=	render_utils pixel_put_utils time colors movement_utils
 PARSE_SRCS	=	parsing
 INIT_SRCS	=	init
@@ -51,14 +59,14 @@ all:			$(NAME)
 
 # @$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/minilibx-linux/ -lm -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $@
 $(NAME): $(LIBFT) $(OBJS) $(MLX)
-				$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -Llib/mlx -lm -lmlx -framework OpenGL -framework AppKit -o $@
+				$(CC) $(CFLAGS) $(OBJS) -L $(LIBFT_DIR) -lft -L$(MLX_DIR) -lm -lmlx $(GRAPHICS_LIB) -o $@
 				@printf "$(GREEN)\n$(NAME) successfully compiled$(DEF_COLOR)\n"
 
 $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@mkdir -p $(DEP_DIR)
 #@$(CC) $(CFLAGS) $(DEP_FLAGS) -Ilib/minilibx-linux/ -I $(INC_DIR) -I$(LIBFT_DIR)/inc -c $< -o $@
-				@$(CC) $(CFLAGS) $(DEP_FLAGS) -Ilib/mlx/ -I $(INC_DIR) -I$(LIBFT_DIR)/inc -c $< -o $@
+				@$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(MLX_DIR) -I $(INC_DIR) -I$(LIBFT_DIR)/inc -c $< -o $@
 				@printf "$(YELLOW).$(DEF_COLOR)"
 
 $(LIBFT):
