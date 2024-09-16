@@ -19,7 +19,7 @@ LIBFT_DIR	=	lib/libft/
 MAIN_SRCS	=	main
 RENDER_SRCS	=	init_render dda render movement rotation mini_map
 UTILS_SRCS	=	render_utils pixel_put_utils time colors movement_utils colors2
-PARSE_SRCS	=	parsing
+PARSE_SRCS	=	parsing1
 INIT_SRCS	=	init
 
 ifeq ($(MAIN), tim)
