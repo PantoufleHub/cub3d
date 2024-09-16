@@ -155,4 +155,8 @@ void	set_wallside(t_data *data, int side);
 int	on_destroy(void);
 int	w_is_in_bound(t_data *data, double movespeed);
 int	s_is_in_bound(t_data *data, double movespeed);
+int getChannel(int color, int shift);
+int combineChannels(int a, int r, int g, int b);
+int blendColors(int color1, int color2, float alpha);
+void	my_mlx_pixel_put_blend(t_img_data *data, int x, int y, int color);
 #endif

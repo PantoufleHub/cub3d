@@ -21,11 +21,12 @@ void	render_column(t_line wall, t_data *data)
 	while (y < wall.drawEnd)
 	{
 		int texY = (int)texPos;
+		int rev_pix = data->textures[data->calc_info.wall_side].width * texY;// + data->calc_info.tex_x;
+		rev_pix += data->textures[data->calc_info.wall_side].width * data->textures[data->calc_info.wall_side].height + data->textures[data->calc_info.wall_side].width;
 		texPos += step;
 		my_mlx_pixel_put(&data->img, data->x, y,
 			((int *)(data->textures[data->calc_info.wall_side].img_data->addr))
-		[data->textures[data->calc_info.wall_side].width
-			* texY + data->calc_info.tex_x]);
+		[data->textures[data->calc_info.wall_side].width * texY + ((data->textures[data->calc_info.wall_side].width - data->calc_info.tex_x) - 1)]);
 		y++;
 	}
 	pixel_put_line(data->img, data->x, floor, data->floor_color);
@@ -98,7 +99,7 @@ void	draw_minimap(t_data *data)
 				{
 					for (int b = 0; b < tile_size; b++)
 					{
-						my_mlx_pixel_put(&data->img, MAP_X + (x * tile_size) + b, MAP_Y + (y * tile_size) + a, create_trgb(0, x * 20, y * 20, 34));
+						my_mlx_pixel_put_blend(&data->img, MAP_X + (x * tile_size) + b, MAP_Y + (y * tile_size) + a, create_trgb(204, x * 20, y * 20, 34));
 					}
 				}
 			}
@@ -115,7 +116,7 @@ void	draw_minimap(t_data *data)
 						{
 							for (int b = 0; b < tile_size; b++)
 							{
-								my_mlx_pixel_put(&data->img, MAP_X + (x * tile_size) + b, MAP_Y + (y * tile_size) + a, 0x003657ba);
+								my_mlx_pixel_put_blend(&data->img, MAP_X + (x * tile_size) + b, MAP_Y + (y * tile_size) + a, 0xCC3657ba);
 							}
 						}
 					}
@@ -125,7 +126,7 @@ void	draw_minimap(t_data *data)
 						{
 							for (int b = 0; b < tile_size; b++)
 							{
-								my_mlx_pixel_put(&data->img, MAP_X + (x * tile_size) + b, MAP_Y + (y * tile_size) + a, 0x00e3faff);
+								my_mlx_pixel_put_blend(&data->img, MAP_X + (x * tile_size) + b, MAP_Y + (y * tile_size) + a, 0xCCe3faff);
 							}
 						}
 					}
@@ -135,10 +136,10 @@ void	draw_minimap(t_data *data)
 						{
 							for (int b = 0; b < tile_size; b++)
 							{
-								my_mlx_pixel_put(&data->img,
+								my_mlx_pixel_put_blend(&data->img,
 								MAP_X + (x * tile_size) + b,
 								MAP_Y + (y * tile_size) + a,
-								create_trgb(0, 90 + x, 90 + x, 90 + x));
+								create_trgb(204, 90 + x, 90 + x, 90 + x));
 							}
 						}
 					}
@@ -149,10 +150,10 @@ void	draw_minimap(t_data *data)
 						{
 							for (int b = 0; b < tile_size; b++)
 							{
-								my_mlx_pixel_put(&data->img,
+								my_mlx_pixel_put_blend(&data->img,
 								MAP_X + (x * tile_size) + b,
 								MAP_Y + (y * tile_size) + a,
-								create_trgb(0, 90 + x, 90 + x, 90 + x));
+								create_trgb(204, 90 + x, 90 + x, 90 + x));
 							}
 						}
 					}

@@ -26,7 +26,7 @@ int	ft_keypress(int key, t_data *data)
 	double	rotSpeed;
 
 	movespeed = data->time.FrameTime * 8.0;
-	rotSpeed  = data->time.FrameTime * 10.0;
+	rotSpeed  = data->time.FrameTime * 2.0;
 
 	if (key == K_W)
 	{
