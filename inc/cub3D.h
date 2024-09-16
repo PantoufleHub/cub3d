@@ -79,8 +79,8 @@ typedef struct	s_calc_info
 
 typedef struct	s_line
 {
-	int	drawStart;
-	int	drawEnd;
+	int	draw_start;
+	int	draw_end;
 }		t_line;
 
 typedef struct	s_img_data
@@ -157,6 +157,7 @@ int	w_is_in_bound(t_data *data, double movespeed);
 int	s_is_in_bound(t_data *data, double movespeed);
 int getChannel(int color, int shift);
 int combineChannels(int a, int r, int g, int b);
-int blendColors(int color1, int color2, float alpha);
+int	blend_colors(int color1, int color2, float alpha);
 void	my_mlx_pixel_put_blend(t_img_data *data, int x, int y, int color);
+void	draw_minimap(t_data *data);
 #endif

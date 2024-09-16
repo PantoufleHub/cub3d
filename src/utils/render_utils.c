@@ -1,12 +1,5 @@
 #include "../../inc/cub3D.h"
 
-// void	render_texture(t_data *data, int height, t_texture_data *texture)
-// {
-// 	data = NULL;
-// 	height = 0;
-// 	printf("Rendering North: %s\n", texture->path);
-// }
-
 void	set_wallside(t_data *data, int side)
 {
 	if (side == 1)
@@ -40,25 +33,25 @@ double	get_wall_dist(int side, t_calc_info calc_info)
 
 t_line	get_line_height(double wall_dist)
 {
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 	t_line	res;
 
-	lineHeight = (int)(HEIGHT / wall_dist);
-	drawStart = -lineHeight / 2 + HEIGHT / 2;
-	if (drawStart < 0)
-		drawStart = 0;
-	drawEnd = lineHeight / 2 + HEIGHT / 2;
-	if (drawEnd >= HEIGHT)
-		drawEnd = HEIGHT - 1;
-	res.drawStart = drawStart;
-	res.drawEnd = drawEnd;
+	line_height = (int)(HEIGHT / wall_dist);
+	draw_start = -line_height / 2 + HEIGHT / 2;
+	if (draw_start < 0)
+		draw_start = 0;
+	draw_end = line_height / 2 + HEIGHT / 2;
+	if (draw_end >= HEIGHT)
+		draw_end = HEIGHT - 1;
+	res.draw_start = draw_start;
+	res.draw_end = draw_end;
 	return (res);
 }
 
 void	pixel_put_line(t_img_data img, int x, t_line vertical_line, int color)
 {
-	while (vertical_line.drawStart != vertical_line.drawEnd)
-		my_mlx_pixel_put(&img, x, vertical_line.drawStart++, color);
+	while (vertical_line.draw_start != vertical_line.draw_end)
+		my_mlx_pixel_put(&img, x, vertical_line.draw_start++, color);
 }

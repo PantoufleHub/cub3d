@@ -124,26 +124,6 @@ void	init_texture_data(t_texture_data *data)
 	data->width = -1;
 }
 
-// void	init_data(t_data *data)
-// {
-// 	data->map = NULL;
-// 	data->ceiling_color = -1;
-// 	data->floor_color = -1;
-// 	data->map = NULL;
-// 	data->textures[0] = malloc(sizeof (t_texture_data));
-// 	data->textures[1] = malloc(sizeof (t_texture_data));
-// 	data->textures[2] = malloc(sizeof (t_texture_data));
-// 	data->textures[3] = malloc(sizeof (t_texture_data));
-// 	init_texture_data(data->textures[0]);
-// 	init_texture_data(data->textures[1]);
-// 	init_texture_data(data->textures[2]);
-// 	init_texture_data(data->textures[3]);
-	// data->player_data[0] = -1;
-	// data->player_data[1] = -1;
-	// data->player_data[2] = -1;
-	// data->player_data[3] = -1;
-// }
-
 /// @brief checks if the data is valid in data structure
 /// @param data pointer to data structure
 /// @param include_map if the map should be included in the check
@@ -525,8 +505,8 @@ int	open_texture_path(int line_nb, char *line, t_data *data, char *path)
 	if (!texture->img_data->img)
 		return (print_err(line, line_nb, ERR_MSG_INVALID_XPM));
 	texture->img_data->addr = mlx_get_data_addr(texture->img_data->img,
-		&texture->img_data->bit_per_pixel, &texture->img_data->size_line,
-		&texture->img_data->endian);
+			&texture->img_data->bit_per_pixel, &texture->img_data->size_line,
+			&texture->img_data->endian);
 	return (set_texture_path(line_nb, line, data, path));
 }
 
@@ -654,7 +634,6 @@ int	set_map(t_list *map, t_data *data)
 	int	nb;
 
 	map_size = ft_lstsize(map);
-	// printf("Size: %d\n", map_size);
 	data->map = malloc(sizeof(char *) * (ft_lstsize(map) + 1));
 	data->map[map_size] = NULL;
 	nb = 0;
