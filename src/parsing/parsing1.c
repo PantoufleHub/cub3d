@@ -326,10 +326,10 @@ int	parse_map(t_list **map)
 
 int	read_map(int line_nb, char *line, t_list **map)
 {
-	int		index;
+	// int		index;
 	char	*line_dup;
 
-	index = 0;
+	// index = 0;
 	if (line && line[ft_strlen(line) - 1] == '\n')
 	{
 		line_dup = malloc(ft_strlen(line));
@@ -387,10 +387,10 @@ int	set_data_color(int line_nb, char *line, int *data_ptr)
 
 int	set_color(int line_nb, char *line, t_data *data)
 {
-	int	index;
+	// int	index;
 	int	*data_ptr;
 
-	index = 0;
+	// index = 0;
 	if (line[0] == 'F')
 		data_ptr = &data->floor_color;
 	else if (line[0] == 'C')
@@ -439,10 +439,10 @@ int	get_color(int line_nb, char *line, t_data *data)
 	return (set_color(line_nb, line, data));
 }
 
-int	set_data_path(int line_nb, char *line, char **ptr, char *path)
+int	set_data_path(char *line, char **ptr, char *path)
 {
 	// CHECK SI CA FOIRE PTETRE?
-	line_nb = 0; // pr erreur
+	// line_nb = 0; // pr erreur
 	*ptr = ft_strdup(path);
 	printf(GRN"✔ Assigned to "MAG"%c%c"GRN" image: "MAG"%s\n"WHT,
 		line[0], line[1], path);
@@ -458,25 +458,25 @@ int	set_texture_path(int line_nb, char *line, t_data *data, char *path)
 			printf("Texture path: %s\n", data->textures[0].path);
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
 		}
-		return (set_data_path(line_nb, line, &data->textures[0].path, path));
+		return (set_data_path(line, &data->textures[0].path, path));
 	}
 	if (line[0] == 'E')
 	{
 		if (data->textures[1].path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->textures[1].path, path));
+		return (set_data_path(line, &data->textures[1].path, path));
 	}
 	if (line[0] == 'S')
 	{
 		if (data->textures[2].path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->textures[2].path, path));
+		return (set_data_path(line, &data->textures[2].path, path));
 	}
 	if (line[0] == 'W')
 	{
 		if (data->textures[3].path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line_nb, line, &data->textures[3].path, path));
+		return (set_data_path(line, &data->textures[3].path, path));
 	}
 	return (print_err(line, line_nb, "Error assigning texture path"));
 }
