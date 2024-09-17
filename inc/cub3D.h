@@ -87,9 +87,9 @@ typedef struct	s_img_data
 {
 	void	*img;
 	void	*addr;
-	int	bit_per_pixel;
-	int	size_line;
-	int	endian;
+	int		bit_per_pixel;
+	int		size_line;
+	int		endian;
 }		t_img_data;
 
 typedef struct	s_mlx 
@@ -116,17 +116,17 @@ typedef struct s_texture_data
 
 typedef struct	s_data
 {
-	void	*mlx;
-	void	*win;
-	t_img_data	img;
-	int		x;
-	char	**map;
-	int		nb_rows;
-	t_time	time;
-	t_calc_info	calc_info;
-	t_vectors	vec;
-	int		floor_color;
-	int		ceiling_color;
+	void			*mlx;
+	void			*win;
+	t_img_data		img;
+	int				x;
+	char			**map;
+	int				nb_rows;
+	t_time			time;
+	t_calc_info		calc_info;
+	t_vectors		vec;
+	int				floor_color;
+	int				ceiling_color;
 	t_texture_data	textures[4]; // N E S W
 }		t_data;
 
@@ -152,7 +152,7 @@ double get_wall_dist(int side, t_calc_info calc_info);
 t_line get_line_height(double wall_dist);
 int	init_data(t_data *data);
 void	set_wallside(t_data *data, int side);
-int	on_destroy(void);
+int	on_destroy(t_data *data);
 int	w_is_in_bound(t_data *data, double movespeed);
 int	s_is_in_bound(t_data *data, double movespeed);
 int getChannel(int color, int shift);
@@ -160,4 +160,5 @@ int combineChannels(int a, int r, int g, int b);
 int	blend_colors(int color1, int color2, float alpha);
 void	my_mlx_pixel_put_blend(t_img_data *data, int x, int y, int color);
 void	draw_minimap(t_data *data);
+void	mem_clean(t_data *data);
 #endif

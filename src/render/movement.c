@@ -54,13 +54,14 @@ int	ft_keypress(int key, t_data *data)
 	if (key == K_A)
 		rotations(data, -rot_speed);
 	if (key == K_ESC)
-		on_destroy();
+		on_destroy(data);
 	return (0);
 }
 
-int	on_destroy(void)
+int	on_destroy(t_data *data)
 {
 	printf(RED"Game closed"WHT"\n");
+	mem_clean(data);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
