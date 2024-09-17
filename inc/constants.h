@@ -22,10 +22,18 @@
 # define TRUE (1)
 # define FALSE (0)
 
-# define MAP_WIDTH 100
-# define MAP_HEIGHT 100
-# define MAP_X 30
+# define MAP_TILE_SIZE 20
+// Only pair values for now
+# define MAP_COLS 30
+# define MAP_ROWS 20
+//
+# define MAP_WALL_COLOR 0xd44250
+# define MAP_EMPTY_COLOR 0xe8e8e8
+# define MAP_VOID_COLOR 0x5271ff
+# define MAP_BORDER_COLOR 0x3D3D3D
+# define MAP_TRANSPARENCY 0x1F000000
 # define MAP_Y 30
+# define MAP_X (WIDTH / 2 - (MAP_COLS * MAP_TILE_SIZE / 2))
 
 # define VEC_INIT (-2)
 

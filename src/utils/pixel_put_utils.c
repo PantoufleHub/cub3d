@@ -14,5 +14,5 @@ void	my_mlx_pixel_put_blend(t_img_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->size_line + x * (data->bit_per_pixel / 8));
 	*(unsigned int *)dst
-		= blend_colors((int)(*dst), color, get_t(color) / 255.0);
+		= blend_colors((int)(*dst), color, (1 - get_t(color) / 255.0));
 }
