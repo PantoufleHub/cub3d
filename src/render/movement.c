@@ -25,8 +25,8 @@ int	ft_keypress(int key, t_data *data)
 	double	move_speed;
 	double	rot_speed;
 
-	move_speed = data->time.FrameTime * 8.0;
-	rot_speed = data->time.FrameTime * 2.0;
+	move_speed = data->time.frame_time * 8.0;
+	rot_speed = data->time.frame_time * 2.0;
 	if (key == K_W)
 	{
 		if (w_is_in_bound(data, move_speed))

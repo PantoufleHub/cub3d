@@ -9,19 +9,19 @@ int	dda(t_calc_info *calc_info, t_data *data)
 	side = 0;
 	while (hit == 0)
 	{
-		if (calc_info->sideDistX < calc_info->sideDistY)
+		if (calc_info->s_dist_x < calc_info->s_dist_y)
 		{
-			calc_info->sideDistX += calc_info->deltaDistX;
-			calc_info->mapX += calc_info->stepX;
+			calc_info->s_dist_x += calc_info->d_dist_x;
+			calc_info->map_x += calc_info->step_x;
 			side = 0;
 		}
 		else
 		{
-			calc_info->sideDistY += calc_info->deltaDistY;
-			calc_info->mapY += calc_info->stepY;
+			calc_info->s_dist_y += calc_info->d_dist_y;
+			calc_info->map_y += calc_info->step_y;
 			side = 1;
 		}
-		if (data->map[calc_info->mapY][calc_info->mapX] == '1')
+		if (data->map[calc_info->map_y][calc_info->map_x] == '1')
 			hit = 1;
 	}
 	return (side);

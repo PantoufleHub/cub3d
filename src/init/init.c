@@ -9,7 +9,7 @@ void	init_render_info(t_data *data)
 	data->vec.plane.x = VEC_INIT;
 	data->vec.plane.y = VEC_INIT;
 	data->time.ref_time = init_timer();
-	data->time.oldTime = 0;
+	data->time.old_time = 0;
 	data->time.time = 0;
 	data->x = 0;
 }

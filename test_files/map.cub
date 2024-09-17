@@ -1,9 +1,9 @@
 C 30,120,180
 F 120,40,80
-NO test_files/img/n2.xpm
-EA test_files/img/e2.xpm
-SO test_files/img/s2.xpm
-WE test_files/img/w2.xpm
+NO test_files/img/valid.xpm
+EA test_files/img/valid.xpm
+SO test_files/img/valid.xpm
+WE test_files/img/valid.xpm
 
 11111111111111                11111111111
 1W000000010001                11110011111

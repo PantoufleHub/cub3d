@@ -4,16 +4,16 @@ void	set_wallside(t_data *data, int side)
 {
 	if (side == 1)
 	{
-		if (data->calc_info.stepY == -1)
+		if (data->calc_info.step_y == -1)
 			data->calc_info.wall_side = 0;
-		if (data->calc_info.stepY == 1)
+		if (data->calc_info.step_y == 1)
 			data->calc_info.wall_side = 2;
 	}
 	else if (side == 0)
 	{
-		if (data->calc_info.stepX == -1)
+		if (data->calc_info.step_x == -1)
 			data->calc_info.wall_side = 3;
-		if (data->calc_info.stepX == 1)
+		if (data->calc_info.step_x == 1)
 			data->calc_info.wall_side = 1;
 	}
 }
@@ -23,9 +23,9 @@ double	get_wall_dist(int side, t_calc_info calc_info)
 	double	wall_dist;
 
 	if (side == 0)
-		wall_dist = (calc_info.sideDistX - calc_info.deltaDistX);
+		wall_dist = (calc_info.s_dist_x - calc_info.d_dist_x);
 	else
-		wall_dist = (calc_info.sideDistY - calc_info.deltaDistY);
+		wall_dist = (calc_info.s_dist_y - calc_info.d_dist_y);
 	if (wall_dist == 0)
 		wall_dist = 0.1;
 	return (wall_dist);

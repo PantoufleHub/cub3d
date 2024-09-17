@@ -18,23 +18,25 @@
 // # define HEIGHT (480)
 
 # ifdef __APPLE__
+
 enum e_key
 {
-	K_W  = 13,
-	K_A  = 0,
-	K_S  = 1,
-	K_D  = 2,
+	K_W = 13,
+	K_A = 0,
+	K_S = 1,
+	K_D = 2,
 	K_ESC = 53
 };
 # endif
 
 # ifdef __unix__
+
 enum e_key
 {
-	K_W  = 119,
-	K_A  = 97,
-	K_S  = 115,
-	K_D  = 100,
+	K_W = 119,
+	K_A = 97,
+	K_S = 115,
+	K_D = 100,
 	K_ESC = 65307
 };
 # endif
@@ -44,66 +46,66 @@ enum e_events
 	E_KEYPRESS = 2
 };
 
-typedef struct	s_vector
+typedef struct s_vector
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 }				t_vector;
 
-typedef struct	s_vectors
+typedef struct s_vectors
 {
-	t_vector plane;
-	t_vector pos;
-	t_vector dir;
+	t_vector	plane;
+	t_vector	pos;
+	t_vector	dir;
 
 }				t_vectors;
 
-typedef struct	s_calc_info
+typedef struct s_calc_info
 {
-	int			mapX;
-	int			mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
-	double		rayDirX;
-	double		rayDirY;
-	int			stepX;
-	int			stepY;
+	int			map_x;
+	int			map_y;
+	double		s_dist_x;
+	double		s_dist_y;
+	double		d_dist_x;
+	double		d_dist_y;
+	double		perp_dist;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	int			step_x;
+	int			step_y;
 	double		wall_x;
 	int			tex_x;
 	int			wall_side;
 }				t_calc_info;
 
 
-typedef struct	s_line
+typedef struct s_line
 {
 	int	draw_start;
 	int	draw_end;
 }		t_line;
 
-typedef struct	s_img_data
+typedef struct s_img_data
 {
 	void	*img;
 	void	*addr;
-	int	bit_per_pixel;
-	int	size_line;
-	int	endian;
+	int		bit_per_pixel;
+	int		size_line;
+	int		endian;
 }		t_img_data;
 
-typedef struct	s_mlx 
+typedef struct s_mlx
 {
 	void	*mlx;
 	void	*mlx_win;
 }				t_mlx;
 
-typedef struct	s_time
+typedef struct s_time
 {
-	struct	timeval	ref_time;
-	float	FrameTime;
-	float	time;
-	float	oldTime;
+	struct timeval	ref_time;
+	float			frame_time;
+	float			time;
+	float			old_time;
 }				t_time;
 
 typedef struct s_texture_data
@@ -114,20 +116,20 @@ typedef struct s_texture_data
 	t_img_data	*img_data;
 }	t_texture_data;
 
-typedef struct	s_data
+typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	t_img_data	img;
-	int		x;
-	char	**map;
-	int		nb_rows;
-	t_time	time;
-	t_calc_info	calc_info;
-	t_vectors	vec;
-	int		floor_color;
-	int		ceiling_color;
-	t_texture_data	textures[4]; // N E S W
+	void			*mlx;
+	void			*win;
+	t_img_data		img;
+	int				x;
+	char			**map;
+	int				nb_rows;
+	t_time			time;
+	t_calc_info		calc_info;
+	t_vectors		vec;
+	int				floor_color;
+	int				ceiling_color;
+	t_texture_data	textures[4];
 }		t_data;
 
 // PARSING
