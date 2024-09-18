@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 10:56:05 by aperron           #+#    #+#             */
+/*   Updated: 2024/09/18 10:56:06 by aperron          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
 
 void	init_render_info(t_data *data)
@@ -9,7 +21,7 @@ void	init_render_info(t_data *data)
 	data->vec.plane.x = VEC_INIT;
 	data->vec.plane.y = VEC_INIT;
 	data->time.ref_time = init_timer();
-	data->time.oldTime = 0;
+	data->time.old_time = 0;
 	data->time.time = 0;
 	data->x = 0;
 }

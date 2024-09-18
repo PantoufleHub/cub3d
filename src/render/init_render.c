@@ -14,28 +14,28 @@
 
 t_calc_info	init_side_dist(t_calc_info calc_info, t_vector pos)
 {
-	if (calc_info.rayDirX < 0)
+	if (calc_info.ray_dir_x < 0)
 	{
-		calc_info.stepX = -1;
-		calc_info.sideDistX = (pos.x - calc_info.mapX)
-			* calc_info.deltaDistX;
+		calc_info.step_x = -1;
+		calc_info.s_dist_x = (pos.x - calc_info.map_x)
+			* calc_info.d_dist_x;
 	}
 	else
 	{
-		calc_info.stepX = 1;
-		calc_info.sideDistX = (calc_info.mapX + 1.0 - pos.x)
-			* calc_info.deltaDistX;
+		calc_info.step_x = 1;
+		calc_info.s_dist_x = (calc_info.map_x + 1.0 - pos.x)
+			* calc_info.d_dist_x;
 	}
-	if (calc_info.rayDirY < 0)
+	if (calc_info.ray_dir_y < 0)
 	{
-		calc_info.stepY = -1;
-		calc_info.sideDistY = (pos.y - calc_info.mapY) * calc_info.deltaDistY;
+		calc_info.step_y = -1;
+		calc_info.s_dist_y = (pos.y - calc_info.map_y) * calc_info.d_dist_y;
 	}
 	else
 	{
-		calc_info.stepY = 1;
-		calc_info.sideDistY = (calc_info.mapY + 1.0 - pos.y)
-			* calc_info.deltaDistY;
+		calc_info.step_y = 1;
+		calc_info.s_dist_y = (calc_info.map_y + 1.0 - pos.y)
+			* calc_info.d_dist_y;
 	}
 	return (calc_info);
 }
@@ -46,18 +46,18 @@ t_calc_info	get_calc_info(int x, t_vector dir, t_vector plane, t_vector pos)
 	double		camera_x;
 
 	camera_x = 2 * x / (double) WIDTH - 1;
-	res.rayDirX = dir.x + plane.x * camera_x;
-	res.rayDirY = dir.y + plane.y * camera_x;
-	res.mapX = (int)pos.x;
-	res.mapY = (int)pos.y;
-	if (res.rayDirX == 0)
-		res.deltaDistX = 1e30;
+	res.ray_dir_x = dir.x + plane.x * camera_x;
+	res.ray_dir_y = dir.y + plane.y * camera_x;
+	res.map_x = (int)pos.x;
+	res.map_y = (int)pos.y;
+	if (res.ray_dir_x == 0)
+		res.d_dist_x = 1e30;
 	else
-		res.deltaDistX = fabs(1 / res.rayDirX);
-	if (res.rayDirY == 0)
-		res.deltaDistY = 1e30;
+		res.d_dist_x = fabs(1 / res.ray_dir_x);
+	if (res.ray_dir_y == 0)
+		res.d_dist_y = 1e30;
 	else
-		res.deltaDistY = fabs(1 / res.rayDirY);
+		res.d_dist_y = fabs(1 / res.ray_dir_y);
 	res = init_side_dist(res, pos);
 	return (res);
 }

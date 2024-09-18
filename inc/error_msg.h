@@ -1,5 +1,17 @@
-#ifndef ERRORS_MSG_H
-# define ERRORS_MSG_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_msg.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 10:57:19 by aperron           #+#    #+#             */
+/*   Updated: 2024/09/18 10:59:12 by aperron          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ERROR_MSG_H
+# define ERROR_MSG_H
 
 # define ERR_MSG_FORMAT "Incorrect format"
 # define ERR_MSG_TOKEN "Unexpected token"
