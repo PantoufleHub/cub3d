@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:57:24 by aperron           #+#    #+#             */
-/*   Updated: 2024/09/18 11:19:03 by aperron          ###   ########.fr       */
+/*   Updated: 2024/09/18 15:39:03 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ enum e_key
 	K_A = 0,
 	K_S = 1,
 	K_D = 2,
-	K_ESC = 53
+	K_ESC = 53,
+	L_ARROW = 123,
+	R_ARROW = 124
 };
 # endif
 
@@ -150,6 +152,8 @@ int					dda(t_calc_info *calc_info, t_data *data);
 int					ft_hooks(t_data *data);
 long				get_time_elapse(struct timeval ref_time_of_day);
 void				rotations(t_data *data, double rotspeed);
+void				left(t_data *data, double move_speed);
+void				right(t_data *data, double move_speed);
 struct timeval		init_timer(void);
 t_calc_info			get_calc_info(int x, t_vector dir, t_vector plane,
 						t_vector pos);

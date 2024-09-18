@@ -18,7 +18,7 @@ DEP_DIR		=	$(OBJ_DIR)dep/
 LIBFT_DIR	=	lib/libft/
 MAIN_SRCS	=	main
 RENDER_SRCS	=	init_render dda render movement rotation mini_map
-UTILS_SRCS	=	render_utils pixel_put_utils time colors movement_utils colors2 mem_clean
+UTILS_SRCS	=	render_utils pixel_put_utils time colors movement_utils movement_utils2 colors2 mem_clean
 PARSE_SRCS	=	parsing1 parsing2 parsing3 parsing4 parsing5 parsing6 parsing7
 INIT_SRCS	=	init
 
