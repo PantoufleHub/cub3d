@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:57:24 by aperron           #+#    #+#             */
-/*   Updated: 2024/09/18 11:19:03 by aperron          ###   ########.fr       */
+/*   Updated: 2024/09/18 14:20:12 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,4 +211,6 @@ int					parse_map(t_list **map);
 int					read_map(int line_nb, char *line, t_list **map);
 int					c_in_str(char *str, char *c_arr);
 void				mem_clean(t_data *data);
+void				forward(t_data *data, double move_speed);
+void				backward(t_data *data, double move_speed);
 #endif
