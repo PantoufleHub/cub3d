@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:57:24 by aperron           #+#    #+#             */
-/*   Updated: 2024/09/18 10:57:25 by aperron          ###   ########.fr       */
+/*   Updated: 2024/09/18 11:19:03 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ double				get_wall_dist(int side, t_calc_info calc_info);
 t_line				get_line_height(double wall_dist);
 int					init_data(t_data *data);
 void				set_wallside(t_data *data, int side);
-int					on_destroy(void);
+int					on_destroy(t_data *data);
 int					w_is_in_bound(t_data *data, double movespeed);
 int					s_is_in_bound(t_data *data, double movespeed);
 int					getChannel(int color, int shift);
@@ -210,4 +210,5 @@ int					parse_map2(t_list *prev_line, t_list *curr_line,
 int					parse_map(t_list **map);
 int					read_map(int line_nb, char *line, t_list **map);
 int					c_in_str(char *str, char *c_arr);
+void				mem_clean(t_data *data);
 #endif

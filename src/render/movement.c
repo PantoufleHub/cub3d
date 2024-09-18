@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfrily <tfrily@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:08:30 by tfrily            #+#    #+#             */
-/*   Updated: 2024/09/17 11:08:32 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/09/18 11:18:42 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ int	ft_keypress(int key, t_data *data)
 	if (key == K_A)
 		rotations(data, -rot_speed);
 	if (key == K_ESC)
-		on_destroy();
+		on_destroy(data);
 	return (0);
 }
 
-int	on_destroy(void)
+int	on_destroy(t_data *data)
 {
 	printf(RED"Game closed"WHT"\n");
+	mem_clean(data);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
