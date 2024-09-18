@@ -1,12 +1,16 @@
-#include "../../lib/mlx/mlx.h"
-#include "../../lib/libft/inc/libft.h"
-#include "../../inc/colors.h"
-#include "../../inc/error_msg.h"
-#include "../../inc/parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing4.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 10:55:48 by aperron           #+#    #+#             */
+/*   Updated: 2024/09/18 11:02:07 by aperron          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 int	actually_set_color(int line_nb, char *line, int *data_ptr, int rgb[3])
 {
@@ -52,10 +56,8 @@ int	set_data_color(int line_nb, char *line, int *data_ptr)
 
 int	set_color(int line_nb, char *line, t_data *data)
 {
-	// int	index;
 	int	*data_ptr;
 
-	// index = 0;
 	if (line[0] == 'F')
 		data_ptr = &data->floor_color;
 	else if (line[0] == 'C')

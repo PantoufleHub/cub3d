@@ -1,12 +1,16 @@
-#include "../../lib/mlx/mlx.h"
-#include "../../lib/libft/inc/libft.h"
-#include "../../inc/colors.h"
-#include "../../inc/error_msg.h"
-#include "../../inc/parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing5.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 10:55:51 by aperron           #+#    #+#             */
+/*   Updated: 2024/09/18 11:02:11 by aperron          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 int	map_char_valid(char c, char adjacent[4])
 {
@@ -96,10 +100,8 @@ int	parse_map(t_list **map)
 
 int	read_map(int line_nb, char *line, t_list **map)
 {
-	// int		index;
 	char	*line_dup;
 
-	// index = 0;
 	if (line && line[ft_strlen(line) - 1] == '\n')
 	{
 		line_dup = malloc(ft_strlen(line));

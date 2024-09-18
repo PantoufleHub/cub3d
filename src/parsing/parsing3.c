@@ -1,18 +1,22 @@
-#include "../../lib/mlx/mlx.h"
-#include "../../lib/libft/inc/libft.h"
-#include "../../inc/colors.h"
-#include "../../inc/error_msg.h"
-#include "../../inc/parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing3.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 10:55:45 by aperron           #+#    #+#             */
+/*   Updated: 2024/09/18 11:02:03 by aperron          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 int	set_data_path(char *line, char **ptr, char *path)
 {
-	// CHECK SI CA FOIRE PTETRE?
-	// line_nb = 0; // pr erreur
 	*ptr = ft_strdup(path);
+	if (!ptr)
+		return (print_err(NULL, 0, ERR_MSG_MALLOC));
 	printf(GRN"✔ Assigned to "MAG"%c%c"GRN" image: "MAG"%s\n"WHT,
 		line[0], line[1], path);
 	return (0);

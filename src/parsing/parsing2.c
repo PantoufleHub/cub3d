@@ -1,12 +1,16 @@
-#include "../../lib/mlx/mlx.h"
-#include "../../lib/libft/inc/libft.h"
-#include "../../inc/colors.h"
-#include "../../inc/error_msg.h"
-#include "../../inc/parsing.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 10:55:41 by aperron           #+#    #+#             */
+/*   Updated: 2024/09/18 11:01:52 by aperron          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3D.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 int	set_texture_path(int line_nb, char *line, t_data *data, char *path)
 {
@@ -31,13 +35,9 @@ int	set_texture_path(int line_nb, char *line, t_data *data, char *path)
 			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
 		return (set_data_path(line, &data->textures[2].path, path));
 	}
-	if (line[0] == 'W')
-	{
-		if (data->textures[3].path)
-			return (print_err(line, line_nb, ERR_MSG_REDIFINING));
-		return (set_data_path(line, &data->textures[3].path, path));
-	}
-	return (print_err(line, line_nb, "Error assigning texture path"));
+	if (data->textures[3].path)
+		return (print_err(line, line_nb, ERR_MSG_REDIFINING));
+	return (set_data_path(line, &data->textures[3].path, path));
 }
 
 int	open_texture_path(int line_nb, char *line, t_data *data, char *path)

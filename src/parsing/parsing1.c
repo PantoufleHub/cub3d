@@ -1,17 +1,16 @@
-#include "../../lib/mlx/mlx.h"
-#include "../../lib/libft/inc/libft.h"
-#include "../../inc/colors.h"
-#include "../../inc/error_msg.h"
-#include "../../inc/parsing.h"
-#include "../../inc/cub3D.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing1.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 10:55:25 by aperron           #+#    #+#             */
+/*   Updated: 2024/09/18 11:01:40 by aperron          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// ----- CHECKLIST -----
-// .CUB FILE EXISTS, ACCESS
-// ALL PATHS, (NO, SO, WE, EA, F, C) no dup, syntax, correct values
-// MAP (SURROUNDED, UNKNOWN CHARACTERS, 1 PLAYER)
+#include "../../inc/cub3D.h"
 
 /// @brief Checks if a string contains one or more of specific characters
 /// @param str 
@@ -35,6 +34,50 @@ int	c_in_str(char *str, char *c_arr)
 		c_index++;
 	}
 	return (-1);
+}
+
+void	get_adjacents(char *lines[3], char (*adjacents)[4], int index)
+{
+	(*adjacents)[1] = lines[1][index + 1];
+	if (index > 0 && lines[1][index - 1])
+		(*adjacents)[3] = lines[1][index - 1];
+	else
+		(*adjacents)[3] = 0;
+	if (lines[0] && ft_strlen(lines[0]) >= (size_t)index)
+		(*adjacents)[0] = lines[0][index];
+	else
+		(*adjacents)[0] = 0;
+	if (lines[2] && ft_strlen(lines[2]) >= (size_t)index)
+		(*adjacents)[2] = lines[2][index];
+	else
+		(*adjacents)[2] = 0;
+}
+
+/// @brief checks if the data is valid in data structure
+/// @param data pointer to data structure
+/// @param include_map if the map should be included in the check
+/// @return returns 1 if valid 0 if not valid
+int	file_data_filled(t_data *data, int include_map)
+{
+	if (!data)
+		return (0);
+	if (data->ceiling_color == -1 || data->floor_color == -1)
+		return (0);
+	if (!data->textures[0].path
+		|| !data->textures[1].path
+		|| !data->textures[2].path
+		|| !data->textures[3].path)
+		return (0);
+	if (include_map)
+	{
+		if (!data->map)
+			return (0);
+		if (data->vec.dir.x == VEC_INIT || data->vec.dir.y == VEC_INIT
+			|| data->vec.plane.x == VEC_INIT || data->vec.plane.y == VEC_INIT
+			|| data->vec.pos.x == VEC_INIT || data->vec.pos.y == VEC_INIT)
+			return (0);
+	}
+	return (1);
 }
 
 int	parse(char *path, t_data *data)
