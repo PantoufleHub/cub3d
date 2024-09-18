@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:29:06 by tfrily            #+#    #+#             */
-/*   Updated: 2024/09/18 11:00:13 by aperron          ###   ########.fr       */
+/*   Updated: 2024/09/18 14:28:49 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ int	ft_clean2dtable(char **ptr)
 	int	x;
 
 	x = 0;
-	while (ptr[x])
+	while (ptr && ptr[x])
 	{
-		free (ptr[x]);
+		free(ptr[x]);
 		ptr[x] = NULL;
 		x++;
 	}
-	free (ptr);
+	if (ptr)
+		free(ptr);
 	ptr = NULL;
 	return (0);
 }

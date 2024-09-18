@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mem_clean.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfrily <tfrily@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:27:10 by tfrily            #+#    #+#             */
-/*   Updated: 2024/09/17 16:27:32 by tfrily           ###   ########.fr       */
+/*   Updated: 2024/09/18 14:36:57 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	clean_textures(t_texture_data textures[4], t_data *data)
 	{
 		mlx_destroy_image(data->mlx, textures[index].img_data->img);
 		ft_clean(textures[index].path);
+		free(textures[index].img_data);
 		index++;
 	}
 }
