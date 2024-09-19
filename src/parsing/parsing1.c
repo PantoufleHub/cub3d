@@ -82,33 +82,25 @@ int	file_data_filled(t_data *data, int include_map)
 
 int	parse(char *path, t_data *data)
 {
-	int				fd;
-	t_list	*tmp_map = NULL;
+	int		fd;
+	t_list	*tmp_map;
 
+	tmp_map = NULL;
 	printf(YEL"\n[ Parsing path \""CYN"%s"YEL"\" ]\n"WHT, path);
 	if (parse_path(path, &fd) < 0)
 		return (-1);
 	printf(YEL"\n[ Parsing file content ]\n"WHT);
 	if (parse_file(fd, data, &tmp_map) < 0)
-	{
-		ft_lstclear(&tmp_map,free);
-		return(-1);
-	}
+		return (ft_lstclear(&tmp_map, free), -1);
 	if (!file_data_filled(data, 0))
 		return (print_err(NULL, 0, ERR_MSG_MISSING));
 	printf(YEL"\n[ Parsing map ]\n"WHT);
 	if (parse_map(&tmp_map) < 0)
-	{
-		ft_lstclear(&tmp_map,free);
-		return (-1);
-	}
+		return (ft_lstclear(&tmp_map, free), -1);
 	if (get_player_data(tmp_map, data) < 0)
-	{
-		ft_lstclear(&tmp_map,free);
-		return (-1);
-	}
+		return (ft_lstclear(&tmp_map, free), -1);
 	set_map(tmp_map, data);
 	data->nb_rows = get_nb_rows(data->map);
-	ft_lstclear(&tmp_map,free);
+	ft_lstclear(&tmp_map, free);
 	return (0);
 }
