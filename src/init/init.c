@@ -38,6 +38,16 @@ void	init_textures(t_texture_data textures[4])
 	}
 }
 
+void	init_keyboard(t_data *data)
+{
+	data->keyboard.left = 0;
+	data->keyboard.right = 0;
+	data->keyboard.up = 0;
+	data->keyboard.down = 0;
+	data->keyboard.rot_left = 0;
+	data->keyboard.rot_right = 0;
+}
+
 int	init_data(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -51,5 +61,6 @@ int	init_data(t_data *data)
 	data->floor_color = -1;
 	data->ceiling_color = -1;
 	init_render_info(data);
+	init_keyboard(data);
 	return (0);
 }

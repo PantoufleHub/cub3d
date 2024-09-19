@@ -56,7 +56,7 @@ void	draw_map_arrow(t_data *data, int cols, int rows, int tile_size)
 		my_mlx_pixel_put(
 			&data->img, (arrowx + (data->vec.dir.y) * len / 3),
 			(arrowy + (-data->vec.dir.x) * len / 3), 0x0);
-			len--;
+		len--;
 	}
 }
 

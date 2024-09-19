@@ -63,6 +63,7 @@ int	render(t_data *data)
 	int		side;
 	t_line	wall;
 
+	move(data);
 	data->x = 0;
 	data->time.old_time = data->time.time;
 	data->time.time = get_time_elapse(data->time.ref_time) / 1000.0;

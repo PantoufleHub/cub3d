@@ -53,8 +53,19 @@ enum e_key
 
 enum e_events
 {
-	E_KEYPRESS = 2
+	E_KEYPRESS = 2,
+	E_KEYRELEASE = 3,
 };
+
+typedef struct s_keyboard
+{
+	int	up;
+	int	down;
+	int	left;
+	int	right;
+	int	rot_right;
+	int	rot_left;
+}	t_keyboard;
 
 typedef struct s_vector
 {
@@ -139,6 +150,7 @@ typedef struct s_data
 	int				floor_color;
 	int				ceiling_color;
 	t_texture_data	textures[4];
+	t_keyboard		keyboard;
 }		t_data;
 
 // PARSING
@@ -220,4 +232,5 @@ void				mem_clean(t_data *data);
 void				clean_textures(t_texture_data textures[4], t_data *data);
 void				forward(t_data *data, double move_speed);
 void				backward(t_data *data, double move_speed);
+int					move(t_data *data);
 #endif
