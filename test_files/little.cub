@@ -3,8 +3,8 @@ EA test_files/img/e2.xpm
 SO test_files/img/s2.xpm
 WE test_files/img/w2.xpm
 
-F 220,100,0
-C 225,30,0
+C 67, 161, 232
+F 151, 101, 201
 
                                                         111111
                                                         11010111111111

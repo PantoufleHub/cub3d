@@ -16,6 +16,8 @@ void	draw_map_tile(t_data *data, int tile_size, int coords[2], int color)
 {
 	int	a;
 	int	b;
+	int	x;
+	int	y;
 
 	a = 0;
 	b = 0;
@@ -23,10 +25,9 @@ void	draw_map_tile(t_data *data, int tile_size, int coords[2], int color)
 	{
 		while (b < tile_size)
 		{
-			my_mlx_pixel_put_blend(&data->img,
-				MAP_X + (coords[0] * tile_size) + b,
-				MAP_Y + (coords[1] * tile_size) + a,
-				color);
+			x = MAP_X + (coords[0] * tile_size) + b;
+			y = MAP_Y + (coords[1] * tile_size) + a;
+			my_mlx_pixel_put_blend(&data->img, x, y, color);
 			b++;
 		}
 		b = 0;
