@@ -112,5 +112,6 @@ int	parse(char *path, t_data *data)
 	}
 	set_map(tmp_map, data);
 	data->nb_rows = get_nb_rows(data->map);
+	ft_lstclear(&tmp_map,free);
 	return (0);
 }

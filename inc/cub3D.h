@@ -45,6 +45,8 @@ enum e_key
 	K_A = 97,
 	K_S = 115,
 	K_D = 100,
+	L_ARROW = 65361,
+	R_ARROW =65363,
 	K_ESC = 65307
 };
 # endif
@@ -215,6 +217,7 @@ int					parse_map(t_list **map);
 int					read_map(int line_nb, char *line, t_list **map);
 int					c_in_str(char *str, char *c_arr);
 void				mem_clean(t_data *data);
+void				clean_textures(t_texture_data textures[4], t_data *data);
 void				forward(t_data *data, double move_speed);
 void				backward(t_data *data, double move_speed);
 #endif
