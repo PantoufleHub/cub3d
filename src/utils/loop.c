@@ -34,7 +34,7 @@ int	on_destroy(t_data *data)
 
 int	ft_hooks(t_data *data)
 {
-	mlx_hook(data->win, 17, 0, on_destroy, NULL);
+	mlx_hook(data->win, 17, 0, on_destroy, data);
 	mlx_loop_hook(data->mlx, render, data);
 	mlx_hook(data->win, E_KEYPRESS, 1L << 0, ft_keypress, data);
 	return (0);

@@ -32,7 +32,8 @@ void	clean_textures(t_texture_data textures[4], t_data *data)
 
 void	mem_clean(t_data *data)
 {
-	ft_clean2dtable(data->map);
+	if(data)
+		ft_clean2dtable(data->map);
 	mlx_destroy_image(data->mlx, data->img.img);
 	mlx_destroy_window(data->mlx, data->win);
 	clean_textures(data->textures, data);
