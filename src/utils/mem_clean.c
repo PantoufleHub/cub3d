@@ -12,7 +12,7 @@
 
 #include "../../inc/cub3D.h"
 
-static void	clean_textures(t_texture_data textures[4], t_data *data)
+void	clean_textures(t_texture_data textures[4], t_data *data)
 {
 	int	index;
 
@@ -32,4 +32,5 @@ void	mem_clean(t_data *data)
 	mlx_destroy_image(data->mlx, data->img.img);
 	mlx_destroy_window(data->mlx, data->win);
 	clean_textures(data->textures, data);
+	free(data->mlx);
 }
