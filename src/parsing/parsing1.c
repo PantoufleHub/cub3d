@@ -92,7 +92,6 @@ int	parse(char *path, t_data *data)
 	if (parse_file(fd, data, &tmp_map) < 0)
 	{
 		ft_lstclear(&tmp_map,free);
-		// clean_textures(data->textures,data);
 		return(-1);
 	}
 	if (!file_data_filled(data, 0))
@@ -101,13 +100,11 @@ int	parse(char *path, t_data *data)
 	if (parse_map(&tmp_map) < 0)
 	{
 		ft_lstclear(&tmp_map,free);
-		// clean_textures(data->textures,data);
 		return (-1);
 	}
 	if (get_player_data(tmp_map, data) < 0)
 	{
 		ft_lstclear(&tmp_map,free);
-		// clean_textures(data->textures,data);
 		return (-1);
 	}
 	set_map(tmp_map, data);

@@ -17,10 +17,14 @@ void	clean_textures(t_texture_data textures[4], t_data *data)
 	int	index;
 
 	index = 0;
+	if(!textures)
+		return ;
 	while (index < 4)
 	{
-		mlx_destroy_image(data->mlx, textures[index].img_data->img);
-		ft_clean(textures[index].path);
+		if(textures[index].img_data->img)
+			mlx_destroy_image(data->mlx, textures[index].img_data->img);
+		if(textures[index].path)
+			ft_clean(textures[index].path);
 		free(textures[index].img_data);
 		index++;
 	}
