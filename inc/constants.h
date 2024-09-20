@@ -22,9 +22,6 @@
 # define CYN "\033[36m"
 # define WHT "\033[37m"
 
-# define SCREEN_WIDTH = 1920
-# define SCREEN_HEIGHT = 1080
-
 # define WINDOW_TITLE "Kubtrwadé"
 
 # define WIDTH (1920)
@@ -48,12 +45,5 @@
 # define MAP_TRANSPARENCY 0x2F000000
 
 # define VEC_INIT (-2)
-
-# define KEYCODE_LEFT = 0
-# define KEYCODE_RIGHT = 0
-# define KEYCODE_FORWARD = 0
-# define KEYCODE_BACKWARD = 0
-
-# define KEYCODE_EXIT = 0
 
 #endif
