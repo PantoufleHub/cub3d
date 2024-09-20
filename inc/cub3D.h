@@ -46,7 +46,7 @@ enum e_key
 	K_S = 115,
 	K_D = 100,
 	L_ARROW = 65361,
-	R_ARROW =65363,
+	R_ARROW = 65363,
 	K_ESC = 65307
 };
 # endif
