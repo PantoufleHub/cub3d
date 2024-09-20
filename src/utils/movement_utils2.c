@@ -19,11 +19,11 @@ static int	d_is_in_bound(t_data *data, double move_speed)
 	int	column_nbr;
 
 	right_y = (int)(data->vec.pos.y + data->vec.plane.y * move_speed);
-	right_x = (int)(data->vec.pos.x + data->vec.plane.y * move_speed);
-	if (data->nb_rows < right_y || right_y < 0)
+	right_x = (int)(data->vec.pos.x + data->vec.plane.x * move_speed);
+	if (data->nb_rows <= right_y || right_y < 0)
 		return (FALSE);
 	column_nbr = ft_strlen(data->map[right_y]);
-	if (column_nbr < right_x || right_x < 0)
+	if (column_nbr <= right_x || right_x < 0)
 		return (FALSE);
 	else
 		return (TRUE);
@@ -35,12 +35,12 @@ static int	a_is_in_bound(t_data *data, double move_speed)
 	int	left_x;
 	int	column_nbr;
 
-	left_y = (int)(data->vec.pos.y + data->vec.plane.y * move_speed);
-	left_x = (int)(data->vec.pos.x + data->vec.plane.y * move_speed);
-	if (data->nb_rows < left_y || left_y < 0)
+	left_y = (int)(data->vec.pos.y - data->vec.plane.y * move_speed);
+	left_x = (int)(data->vec.pos.x - data->vec.plane.x * move_speed);
+	if (data->nb_rows <= left_y || left_y < 0)
 		return (FALSE);
 	column_nbr = ft_strlen(data->map[left_y]);
-	if (column_nbr < left_x || left_x < 0)
+	if (column_nbr <= left_x || left_x < 0)
 		return (FALSE);
 	else
 		return (TRUE);
