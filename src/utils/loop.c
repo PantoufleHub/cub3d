@@ -61,8 +61,8 @@ int	move(t_data *data)
 	double	move_speed;
 	double	rot_speed;
 
-	move_speed = data->time.frame_time * 6.0;
-	rot_speed = data->time.frame_time * 2.0;
+	move_speed = data->time.frame_time * MOVESPEED;
+	rot_speed = data->time.frame_time * ROTSPEED;
 	if (data->keyboard.left)
 		right(data, move_speed);
 	if (data->keyboard.right)

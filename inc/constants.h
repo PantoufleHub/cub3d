@@ -26,16 +26,16 @@
 
 # define WIDTH (1920)
 # define HEIGHT (1080)
-# define SPEED (0.5)
-# define ROTSPEED (0.2)
+# define MOVESPEED (6.0)
+# define ROTSPEED (2.0)
 # define TRUE (1)
 # define FALSE (0)
 
 // Only pair values for now
-# define MAP_TILE_SIZE 20
 # define MAP_COLS 20
 # define MAP_ROWS 20
 //
+# define MAP_TILE_SIZE 20
 # define MAP_X 30
 # define MAP_Y 30
 # define MAP_WALL_COLOR 0xd44250
